@@ -431,7 +431,7 @@ const App = () => {
                   <span className="text-white font-black text-[10px] uppercase tracking-[0.3em]">Showroom Premium e Industrial</span>
                 </div>
                 <h2 className="text-6xl md:text-8xl font-black text-white leading-[0.85] mb-8 tracking-tighter uppercase italic">
-                  LA LUPA DE NUESTRA <br/>
+                  LA LUZ DE NUESTRA <br/>
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600">CIUDAD.</span>
                 </h2>
                 <p className="text-xl text-emerald-100/70 mb-12 max-w-xl font-medium leading-relaxed italic">
@@ -851,22 +851,23 @@ const CooperativismoView = () => {
 };
 
 const ConsejoView = () => {
-  const consejoActual = {
-    mesa: [
-      { cargo: "Presidente", nombre: "Juan Antonio Renaudo" },
-      { cargo: "Vicepresidente", nombre: "Antonio Payero" },
-      { cargo: "Secretaria", nombre: "María Evelyn Becerra" },
-      { cargo: "Pro-secretaria", nombre: "Hilda Violeta Monje" },
-      { cargo: "Tesorero", nombre: "Alfredo Lazaro Carrascull" },
-      { cargo: "Pro-tesorero", nombre: "Hector Gregorio Aguzzi" }
-    ],
-    vocales: ["Francisco Luis Saibene", "Osvaldo Ricardo Phillpott", "Jorge Omar De La Rocha", "Gabriel Enrique Ponisio"],
-    otros: [
-      { cargo: "Síndico Titular", nombre: "Julio Gaston Dayenoff" },
-      { cargo: "Síndico Suplente", nombre: "Luis Alberto Medina" },
-      { cargo: "Gerente", nombre: "Nilda Ines Alaniz" }
-    ]
-  };
+  const autoridades = [
+  { cargo: "Presidente", nombre: "Juan Antonio Renaudo" },
+  { cargo: "Vicepresidente", nombre: "Héctor Gregorio Aguzzi" },
+  { cargo: "Secretaria", nombre: "María Evelyn Becerra" },
+  { cargo: "Prosecretario", nombre: "Gabriel Enrique Ponisio" },
+  { cargo: "Tesorero", nombre: "Alfredo Lázaro Carrascull" },
+  { cargo: "Protesorero", nombre: "Osvaldo Phillpott" },
+  { 
+    cargo: "Vocales Titulares", 
+    nombres: ["Antonio Payero", "Francisco Luis Saibene", "Jorge Omar De La Rocha", "Carmen Adrian Rivero"] 
+  },
+  { 
+    cargo: "Vocales Suplentes", 
+    nombres: ["Hilda Violeta Monje", "Roque Alfredo Sosa", "Roberto Francisco Capra"] 
+  },
+  { cargo: "Gerente", nombre: "Nilda Alaniz" }
+];
 
   return (
     <div className="bg-white min-h-screen pb-20 animate-in fade-in duration-700">
