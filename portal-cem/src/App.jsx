@@ -431,7 +431,7 @@ const App = () => {
                   <span className="text-white font-black text-[10px] uppercase tracking-[0.3em]">Showroom Premium e Industrial</span>
                 </div>
                 <h2 className="text-6xl md:text-8xl font-black text-white leading-[0.85] mb-8 tracking-tighter uppercase italic">
-                  LA LUZ DE NUESTRA <br/>
+                  LA LUPA DE NUESTRA <br/>
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600">CIUDAD.</span>
                 </h2>
                 <p className="text-xl text-emerald-100/70 mb-12 max-w-xl font-medium leading-relaxed italic">
