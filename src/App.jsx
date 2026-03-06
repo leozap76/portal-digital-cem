@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import imagenNegocio from './mi_negocio1.png';
+
 import { 
   Share2,
   Copy,
@@ -8,6 +10,8 @@ import {
   X, 
   Search, 
   Lightbulb, 
+  ChevronLeft, 
+  Sparkles,
   Zap, 
   ChevronRight, 
   Phone, 
@@ -34,10 +38,256 @@ import {
  * PORTAL CEM - COOPERATIVA DE ELECTRICIDAD Y OTROS SERVICIOS DE MERCEDES (SAN LUIS) LTDA.
  * Actualización: Reemplazo de logo por el símbolo de los pinos del cooperativismo.
  */
+// VISTA DE MATERIALES (Marcas)
+const VistaMateriales = ({ alVolver }) => {
+  // Función para generar iniciales elegantes si no hay logo
+  const getIniciales = (nombre) => {
+    return nombre.slice(0, 2).toUpperCase();
+  };
+
+  const marcas = [
+    { nombre: "Sica", logo: "/logos/logoSica.webp" },
+    { nombre: "Siemens", logo: "/logos/logoSiemens.webp" },
+    { nombre: "Schneider",logo: "/logos/logoScneider.webp" },
+    { nombre: "Jeluz", logo: "/logos/logoJeluz.webp" },
+    { nombre: "Baw", logo: "/logos/logoBaw.webp" },
+    { nombre: "Conextube", logo: "/logos/logoConextube.webp" },
+    { nombre: "Zoloda", logo: "/logos/logoZoloda.webp" },
+    { nombre: "Imsa", logo: "/logos/LogoImsa.webp" },
+    { nombre: "Argenplast", logo: "/logos/logoArgenplast.webp" },
+    { nombre: "Kalop", logo: "/logos/logoKalop.webp" },
+    { nombre: "Genrod", logo: "/logos/logoGenrod.webp" },
+    { nombre: "Macroled", logo: "/logos/logoMacroled.webp" },
+    { nombre: "Phillips", logo: "/logos/logoPhillips.webp" },
+    { nombre: "Tacoma", logo: "/logos/logoTacoma.webp" },
+  ];
+
+  return (
+    <div className="min-h-screen bg-white animate-in fade-in duration-700">
+      {/* HEADER DE MARCAS */}
+      <div className="bg-emerald-950 py-20 px-6 text-center relative overflow-hidden">
+        <button 
+          onClick={alVolver} 
+          className="absolute top-8 left-8 flex items-center text-emerald-400 hover:text-white transition-colors font-black uppercase text-[10px] tracking-widest"
+        >
+          <ArrowLeft size={16} className="mr-2" /> Volver al Inicio
+        </button>
+        
+        <span className="text-yellow-400 font-black uppercase tracking-[0.4em] text-[10px] mb-4 block">Garantía de Calidad</span>
+        <h2 className="text-4xl md:text-6xl font-black text-white uppercase italic tracking-tighter">
+          Marcas <span className="text-emerald-400">Líderes</span>
+        </h2>
+      </div>
+
+      <div className="container mx-auto px-4 py-16">
+        <p className="text-center text-gray-400 font-bold uppercase text-[11px] tracking-[0.3em] mb-12">
+          Proveedores oficiales de materiales eléctricos
+        </p>
+
+        {/* GRID DE MARCAS - Minimalismo Puro */}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+          {marcas.map((marca, idx) => (
+            <div 
+              key={idx} 
+              className="group bg-slate-50 border border-gray-100 p-8 rounded-[2.5rem] flex flex-col items-center justify-center text-center min-h-[180px] hover:bg-emerald-900 transition-all duration-500 hover:shadow-2xl hover:shadow-emerald-900/20"
+            >
+              {/* Espacio para el Logo */}
+              <div className="w-full h-12 flex items-center justify-center mb-4 transition-transform duration-500 group-hover:scale-110">
+                {marca.logo ? (
+                  <img 
+                    src={marca.logo} 
+                    alt={marca.nombre} 
+                    className="max-h-full max-w-[120px] object-contain grayscale group-hover:grayscale-0 group-hover:brightness-0 group-hover:invert transition-all" 
+                  />
+                ) : (
+                  <div className="w-12 h-12 rounded-2xl border-2 border-gray-200 group-hover:border-emerald-700 flex items-center justify-center">
+                    <span className="text-xl font-black text-gray-300 group-hover:text-yellow-400 italic">
+                      {getIniciales(marca.nombre)}
+                    </span>
+                  </div>
+                )}
+              </div>
+
+              {/* Nombre de la Marca */}
+              <span className="text-[11px] font-black uppercase tracking-widest text-gray-400 group-hover:text-white transition-colors">
+                {marca.nombre}
+              </span>
+            </div>
+          ))}
+
+          {/* Tarjeta de Cierre Especial */}
+          <div className="bg-yellow-400 p-8 rounded-[2.5rem] flex flex-col items-center justify-center text-center min-h-[180px]">
+            <Zap size={24} className="text-emerald-950 mb-3" />
+            <span className="text-[10px] font-black uppercase tracking-tighter text-emerald-950 leading-tight">
+              Y más de 100 <br/> proveedores locales
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const VistaIluminacion = ({ alVolver }) => {
+  // Datos actualizados con los nombres exactos y los links directos a 180 Grados
+  const colecciones = [
+    {
+      id: 1,
+      titulo: "Colgantes",
+      imagen: "https://images.unsplash.com/photo-1543198126-a8ad8e47fb22?auto=format&fit=crop&q=80&w=800",
+      descripcion: "Líneas puras para comedores y espacios de doble altura.",
+      link: "https://180grados.com.ar/product-category/iluminacion-interior/colgantes/"
+    },
+    {
+      id: 2,
+      titulo: "Apliques de Interior",
+      imagen: "https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?auto=format&fit=crop&q=80&w=800",
+      descripcion: "Luz indirecta para realzar texturas en muros y pasillos.",
+      link: "https://180grados.com.ar/product-category/iluminacion-interior/apliques-de-interior/"
+    },
+    {
+      id: 3,
+      titulo: "Artefactos de Pared",
+      imagen: "https://images.unsplash.com/photo-1563298723-dcfebaa392e3?auto=format&fit=crop&q=80&w=800",
+      descripcion: "Resistencia y diseño para jardines y fachadas modernas.",
+      link: "https://180grados.com.ar/product-category/iluminacion-exterior/artefactos-de-pared/"
+    }
+  ];
+
+  const abrirCatalogoCompleto = () => {
+    window.open('https://180grados.com.ar/', '_blank');
+  };
+
+  const abrirSeccion = (url) => {
+    window.open(url, '_blank');
+  };
+
+  return (
+    <div className="min-h-screen bg-neutral-950 text-white animate-in fade-in duration-1000">
+      {/* HEADER PREMIUM */}
+      <header className="relative h-[60vh] flex items-center justify-center overflow-hidden">
+        {/* Imagen de fondo con overlay oscuro */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&q=80&w=1600" 
+            className="w-full h-full object-cover opacity-40 scale-105"
+            alt="Showroom de Iluminación"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/20 via-neutral-950/60 to-neutral-950"></div>
+        </div>
+
+        <button 
+          onClick={alVolver} 
+          className="absolute top-10 left-10 z-20 flex items-center text-white/50 hover:text-white transition-all font-black uppercase text-[10px] tracking-[0.4em] group"
+        >
+          <ChevronLeft size={16} className="mr-2 group-hover:-translate-x-1 transition-transform" /> Volver
+        </button>
+
+        <div className="relative z-10 text-center px-4">
+          <div className="flex justify-center mb-6">
+            <div className="w-12 h-12 border border-white/20 rounded-full flex items-center justify-center animate-pulse">
+              <Lightbulb size={20} className="text-yellow-400" />
+            </div>
+          </div>
+          <h1 className="text-6xl md:text-8xl font-black uppercase italic tracking-tighter mb-4">
+            180° <span className="text-transparent text-outline-white">Grados</span>
+          </h1>
+          <p className="text-yellow-400 font-bold uppercase tracking-[0.6em] text-xs">Iluminación de Diseño</p>
+        </div>
+      </header>
+
+      {/* SECCIÓN DE COLECCIONES */}
+      <section className="container mx-auto px-6 py-24">
+        <div className="flex flex-col md:flex-row justify-between items-end mb-16 space-y-4 md:space-y-0">
+          <div className="max-w-xl">
+            <h2 className="text-3xl font-black uppercase italic tracking-tighter mb-4">
+              La luz como <span className="text-emerald-500">Arquitectura</span>
+            </h2>
+            <p className="text-neutral-500 font-medium leading-relaxed">
+              En alianza con 180 Grados, ofrecemos soluciones lumínicas que transforman espacios ordinarios en experiencias visuales únicas. Calidad premium para proyectos exigentes.
+            </p>
+          </div>
+          <button 
+            onClick={abrirCatalogoCompleto}
+            className="flex items-center text-xs font-black uppercase tracking-widest border-b-2 border-yellow-400 pb-2 hover:text-yellow-400 transition-all"
+          >
+            Ver catálogo oficial <ChevronRight size={14} className="ml-2" />
+          </button>
+        </div>
+
+        {/* GRID DE PRODUCTOS / CATEGORÍAS */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {colecciones.map((col) => (
+            <div 
+              key={col.id} 
+              onClick={() => abrirSeccion(col.link)}
+              className="group relative cursor-pointer overflow-hidden rounded-[2rem] bg-neutral-900 border border-transparent hover:border-emerald-500/30 transition-all duration-500"
+            >
+              <div className="aspect-[4/5] overflow-hidden">
+                <img 
+                  src={col.imagen} 
+                  alt={col.titulo} 
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-70 group-hover:opacity-100"
+                />
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-transparent to-transparent opacity-80"></div>
+              <div className="absolute bottom-0 left-0 p-8 w-full">
+                <h3 className="text-xl font-black uppercase italic tracking-tighter mb-2 group-hover:text-yellow-400 transition-colors">
+                  {col.titulo}
+                </h3>
+                <p className="text-xs text-neutral-400 font-medium leading-tight opacity-0 group-hover:opacity-100 transition-all transform translate-y-4 group-hover:translate-y-0">
+                  {col.descripcion}
+                </p>
+                {/* Indicador de link externo cambiado a ArrowRight para evitar errores de importación */}
+                <div className="mt-4 flex items-center text-[9px] font-black uppercase tracking-widest text-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                  Ver en tienda <ArrowRight size={10} className="ml-1" />
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* CTA: ASESORAMIENTO LUMÍNICO */}
+      <section className="container mx-auto px-6 pb-32">
+        <div className="bg-emerald-600 rounded-[3rem] p-12 md:p-20 relative overflow-hidden flex flex-col items-center text-center">
+          <div className="absolute top-0 right-0 p-10 opacity-10 rotate-12">
+            <Sparkles size={180} />
+          </div>
+          <h3 className="text-4xl md:text-5xl font-black uppercase italic tracking-tighter mb-6 relative z-10 leading-none">
+            ¿Necesitás un proyecto <br className="hidden md:block"/> de iluminación?
+          </h3>
+          <p className="text-emerald-100 font-bold uppercase tracking-widest text-[10px] mb-10 max-w-md">
+            Nuestro equipo técnico diseña la distribución de luz ideal para tu hogar o empresa sin costo adicional.
+          </p>
+          <button 
+            onClick={() => window.open('https://wa.me/5492657393070?text=Hola! Busco asesoramiento premium para un proyecto de iluminación 180.', '_blank')}
+            className="bg-white text-emerald-950 font-black px-12 py-5 rounded-2xl uppercase text-xs tracking-widest hover:bg-yellow-400 transition-all transform hover:scale-105 shadow-2xl flex items-center"
+          >
+            <MessageCircle size={18} className="mr-3" /> Hablar con un Especialista
+          </button>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+
+
+
 const App = () => {
+  const [seccionActiva, setSeccionActiva] = useState('inicio');
+  
+
   // --- ESTADOS ---
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeTab, setActiveTab] = useState('inicio'); // 'inicio' o 'beneficios'
+  const [activeTab, setActiveTab] = useState('inicio');
+
+ useEffect(() => {
+  window.scrollTo(0, 0);
+}, [seccionActiva]);
+
+   // 'inicio' o 'beneficios'
   const [scrolled, setScrolled] = useState(false);
   const [cart, setCart] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -51,6 +301,10 @@ const App = () => {
   const [showChangePass, setShowChangePass] = useState(false);
   const [newPassInput, setNewPassInput] = useState("");
 
+  const volverAlInicio = () => setSeccionActiva('inicio');
+
+  
+  
   // --- FUNCIONALIDAD COMPARTIR ---
   const [copied, setCopied] = useState(false);
   const [showShareTooltip, setShowShareTooltip] = useState(false);
@@ -308,8 +562,10 @@ const App = () => {
         { name: 'Quienes Somos', tab: 'nosotros' },
         { name: 'Cooperativismo', tab: 'cooperativismo' },
         { name: 'Consejo de Administración', tab: 'consejo' },
-        { name: 'Educación Cooperativa', tab: 'inicio' },
-        { name: 'Beneficios', tab: 'beneficios' }
+        { name: 'Educación Cooperativa', tab: 'educacion' },
+        { name: 'Beneficios', tab: 'beneficios' },
+        { name: 'Clientes', tab: 'clientes' }
+
       ].map((item) => (
         <button 
           key={item.name}
@@ -327,12 +583,16 @@ const App = () => {
 <header className={`sticky top-0 z-50 transition-all duration-500 ${scrolled ? 'bg-white/95 backdrop-blur-md shadow-xl py-2' : 'bg-white py-4 md:py-6'}`}>
   <div className="container mx-auto px-4 flex justify-between items-center">
     <div className="flex items-center space-x-2 md:space-x-4 group cursor-pointer" onClick={() => setActiveTab('inicio')}>
-      <div className="w-10 h-10 md:w-14 md:h-14 bg-white rounded-xl md:rounded-2xl rotate-3 flex items-center justify-center border-b-2 md:border-b-4 border-emerald-800 shadow-lg group-hover:rotate-0 transition-all duration-500 overflow-hidden">
-        <img src={LOGO_COOP} alt="Logo CEM" className="w-full h-full object-cover" />
-      </div>
+      <div className="w-10 h-10 md:w-14 md:h-14 flex items-center justify-center transition-all duration-500">
+  <img 
+    src="/logos/LogoCoop.png" 
+    alt="Logo CEM" 
+    className="w-full h-full object-contain" 
+  />
+</div>
       <div className="flex flex-col">
         <h1 className="text-lg md:text-2xl font-black leading-none text-emerald-900 uppercase tracking-tighter">
-          COOPERATIVA DE ELECTRICIDAD<span className="text-emerald-600">CEM</span>
+          COOPERATIVA DE ELECTRICIDAD<span className="text-emerald-600"> CEM</span>
         </h1>
         <p className="text-[8px] md:text-xs text-emerald-500 font-black italic tracking-tight uppercase">
           y otros servicios de Villa Mercedes (San Luis) LTDA
@@ -383,41 +643,13 @@ const App = () => {
 
 <main className="relative">
   {/* VISTA INICIO */}
-  {activeTab === 'inicio' && (
+  {activeTab === 'inicio' && seccionActiva === 'inicio' &&(
     <div className="animate-in fade-in duration-500">
-       {/* Aquí va todo tu código de Hero Section, Categorías y Product Grid que ya tienes */}
-       {/* (Mantén los bloques de las líneas 319 a 505) */}
-    </div>
-  )}
-
-  {/* VISTA BENEFICIOS */}
-  {activeTab === 'beneficios' && (
-    <BeneficiosView WA_ASOCIARSE={WA_ASOCIARSE} setActiveTab={setActiveTab} />
-  )}
-
-  {/* VISTA COOPERATIVISMO */}
-  {activeTab === 'cooperativismo' && (
-    <CooperativismoView />
-  )}
-
-  {/* VISTA Consejo */}
-  {activeTab === 'consejo' && <ConsejoView />}
-
-  {/* VISTA Nosotros */}
-  {activeTab === 'nosotros' && <NosotrosView />}
-
-  
-  
-</main>
-
-      {/* --- Contenido Condicional --- */}
-      {activeTab === 'inicio' ? (
-        <>
-          {/* --- Hero Section --- */}
+       {/* --- Hero Section --- */}
           <section className="relative h-[700px] flex items-center overflow-hidden bg-emerald-900">
             <div className="absolute inset-0">
               <img 
-                src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&q=80&w=1600" 
+                src={imagenNegocio}
                 className="w-full h-full object-cover opacity-20 scale-110"
                 alt="Showroom CEM"
               />
@@ -448,11 +680,11 @@ const App = () => {
               </div>
             </div>
           </section>
-
           {/* --- Categorías Destacadas --- */}
           <section className="py-32 container mx-auto px-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-              <div className="group relative h-[500px] rounded-[3rem] overflow-hidden cursor-pointer shadow-2xl bg-gray-100">
+              <div className="group relative h-[500px] rounded-[3rem] overflow-hidden cursor-pointer shadow-2xl bg-gray-100" onClick={() => setSeccionActiva('materiales')}>
+                
                 <img 
                     src="https://images.unsplash.com/photo-1544724569-5f546fd6f2b5?auto=format&fit=crop&q=80&w=1000" 
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" 
@@ -468,7 +700,8 @@ const App = () => {
                 </div>
               </div>
 
-              <div className="group relative h-[500px] rounded-[3rem] overflow-hidden cursor-pointer shadow-2xl">
+              <div className="group relative h-[500px] rounded-[3rem] overflow-hidden cursor-pointer shadow-2xl" onClick={() => setSeccionActiva('iluminacion')}>
+                
                 <img 
                     src="https://180grados.com.ar/wp-content/uploads/2024/06/Diseno-sin-titulo-65.jpg.webp" 
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" 
@@ -482,10 +715,10 @@ const App = () => {
                     Ver Colección <ArrowRight className="ml-2 group-hover:translate-x-3 transition-transform" size={18}/>
                   </div>
                 </div>
+             
               </div>
             </div>
           </section>
-
           {/* --- Product Grid --- */}
           <section className="relative py-32 overflow-hidden min-h-[900px] flex items-center">
             <div className="absolute inset-0 z-0">
@@ -504,7 +737,7 @@ const App = () => {
                     <div className="h-[3px] w-12 bg-yellow-500 rounded-full"></div>
                     <span className="text-emerald-900 font-black uppercase tracking-[0.3em] text-[10px]">Catálogo Online</span>
                   </div>
-                  <h3 className="text-5xl md:text-6xl font-black text-emerald-950 tracking-tighter uppercase italic">Productos en Foco</h3>
+                  <h3 className="text-5xl md:text-6xl font-black text-emerald-950 tracking-tighter uppercase italic">Productos en Promoción</h3>
                 </div>
               </div>
 
@@ -537,104 +770,45 @@ const App = () => {
               </div>
             </div>
           </section>
-        </>
-      ) : (
-        /* --- Página de Beneficios --- */
-        <div className="animate-in fade-in slide-in-from-bottom-4 duration-700">
-          <section className="bg-emerald-900 py-32 relative overflow-hidden">
-            <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:20px_20px]"></div>
-            <div className="container mx-auto px-4 relative">
-              <button 
-                onClick={() => setActiveTab('inicio')}
-                className="flex items-center text-emerald-300 font-black text-[10px] uppercase tracking-widest mb-12 hover:text-white transition-colors group"
-              >
-                <ArrowLeft size={16} className="mr-2 group-hover:-translate-x-1 transition-transform" /> Volver al Inicio
-              </button>
-              <div className="max-w-4xl">
-                <h2 className="text-6xl md:text-8xl font-black text-white uppercase italic tracking-tighter leading-[0.85] mb-8">
-                  SER ASOCIADO <br/>
-                  <span className="text-yellow-400">TIENE PREMIO.</span>
-                </h2>
-                <p className="text-2xl text-emerald-100/70 font-medium italic max-w-2xl leading-relaxed">
-                  Formar parte de la Cooperativa CEM no solo es apoyar el crecimiento local, sino también acceder a beneficios exclusivos en cada una de sus compras.
-                </p>
-              </div>
-            </div>
-          </section>
+       {/* (Mantén los bloques de las líneas 319 a 505) */}
+    </div>
+  )}
 
-          <section className="py-24 container mx-auto px-4">
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 -mt-32">
-              
-              {/* Card 1: Descuento Principal */}
-              <div className="bg-white rounded-[3rem] p-12 shadow-2xl border border-gray-100 flex flex-col items-center text-center group hover:-translate-y-4 transition-transform duration-500">
-                <div className="w-24 h-24 bg-yellow-100 text-yellow-600 rounded-full flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
-                  <Percent size={48} strokeWidth={3} />
-                </div>
-                <h3 className="text-4xl font-black text-emerald-950 uppercase tracking-tighter mb-4">7% OFF</h3>
-                <p className="text-gray-500 font-bold uppercase text-[10px] tracking-[0.2em] mb-6 italic">En todas las compras</p>
-                <p className="text-gray-600 leading-relaxed font-medium">
-                  Presentando en dni, obtenga un 7% de descuento directo en cualquier producto de nuestro catálogo, sin montos mínimos.
-                </p>
-              </div>
+  {/* VISTA BENEFICIOS */}
+  {activeTab === 'beneficios' && (
+    <BeneficiosView WA_ASOCIARSE={WA_ASOCIARSE} setActiveTab={setActiveTab} />
+  )}
 
-              {/* Card 2: Promociones Especiales */}
-              <div className="bg-emerald-800 rounded-[3rem] p-12 shadow-2xl flex flex-col items-center text-center text-white group hover:-translate-y-4 transition-transform duration-500">
-                <div className="w-24 h-24 bg-emerald-700 text-yellow-400 rounded-full flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
-                  <Gift size={48} strokeWidth={3} />
-                </div>
-                <h3 className="text-4xl font-black uppercase tracking-tighter mb-4">PROMOS</h3>
-                <p className="text-emerald-400 font-bold uppercase text-[10px] tracking-[0.2em] mb-6 italic">Eventos Exclusivos</p>
-                <p className="text-emerald-100/70 leading-relaxed font-medium">
-                  Acceso prioritario a preventas, liquidaciones de temporada y eventos especiales de diseño en nuestro Showroom Premium.
-                </p>
-              </div>
+  {/* VISTA COOPERATIVISMO */}
+  {activeTab === 'cooperativismo' && (
+    <CooperativismoView />
+  )}
 
-              {/* Card 3: Cómo Asociarse */}
-              <div className="bg-white rounded-[3rem] p-12 shadow-2xl border border-gray-100 flex flex-col items-center text-center group hover:-translate-y-4 transition-transform duration-500">
-                <div className="w-24 h-24 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
-                  <CheckCircle2 size={48} strokeWidth={3} />
-                </div>
-                <h3 className="text-4xl font-black text-emerald-950 uppercase tracking-tighter mb-4">ASOCIARSE</h3>
-                <p className="text-gray-500 font-bold uppercase text-[10px] tracking-[0.2em] mb-6 italic">Simple y Rápido</p>
-                <p className="text-gray-600 leading-relaxed font-medium mb-8">
-                  Cualquier vecino de Villa Mercedes puede ser parte. Solo necesita presentar su DNI y un servicio en nuestras oficinas o vía digital.
-                </p>
-                <a 
-                  href={`https://wa.me/${WA_ASOCIARSE}?text=Hola!%20Me%20interesa%20información%20para%20asociarme%20a%20la%20Cooperativa%20CEM.`}
-                  target="_blank"
-                  className="w-full py-5 bg-emerald-900 text-white rounded-2xl font-black uppercase tracking-widest text-xs flex items-center justify-center group"
-                >
-                  <MessageCircle size={18} className="mr-2" /> Consultar por WhatsApp
-                </a>
-              </div>
-            </div>
+  {/* VISTA Consejo */}
+  {activeTab === 'consejo' && <ConsejoView />}
 
-            <div className="mt-32 max-w-5xl mx-auto bg-gray-50 rounded-[4rem] p-16 flex flex-col md:flex-row items-center gap-16">
-              <div className="flex-1">
-                <span className="text-emerald-600 font-black uppercase tracking-[0.3em] text-[10px] mb-6 block">Contacto Directo</span>
-                <h4 className="text-5xl font-black text-emerald-950 uppercase tracking-tighter italic mb-8">¿Aún no eres parte?</h4>
-                <p className="text-gray-600 text-lg font-medium italic mb-10 leading-relaxed">
-                  Sumate hoy mismo y empezá a disfrutar de los beneficios de pertenecer a la cooperativa que impulsa Villa Mercedes. Nuestro equipo te asesorará en el proceso.
-                </p>
-                <div className="flex flex-wrap gap-4">
-                  <div className="bg-white px-8 py-4 rounded-2xl border border-gray-200 flex items-center">
-                    <Phone size={20} className="text-emerald-600 mr-4" />
-                    <span className="font-black text-emerald-950">2657 393070</span>
-                  </div>
-                </div>
-              </div>
-              <div className="w-full md:w-1/3 aspect-square bg-emerald-100 rounded-[3rem] overflow-hidden relative group">
-                <img 
-                  src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80&w=800" 
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                  alt="Atención CEM"
-                />
-                <div className="absolute inset-0 bg-emerald-900/20"></div>
-              </div>
-            </div>
-          </section>
-        </div>
-      )}
+  {/* VISTA Nosotros */}
+  {activeTab === 'nosotros' && <NosotrosView />}
+
+  {/* NUEVA VISTA DE EDUCACIÓN */}
+  {activeTab === 'educacion' && <EducacionView />}
+ 
+ {/* NUEVA VISTA DE CLIENTES */}
+{activeTab === 'clientes' && <ClientesView />}
+  
+  {/* NUEVA VISTA DE MATERIALES */}
+{seccionActiva === 'materiales' && (
+  <VistaMateriales alVolver={() => setSeccionActiva('inicio')} />
+)}
+
+{/* NUEVA VISTA DE ILUMINACIÓN */}
+{seccionActiva === 'iluminacion' && (
+  <VistaIluminacion alVolver={() => setSeccionActiva('inicio')} />
+)}
+  
+</main>
+
+     
 
       {/* --- Cart Sidebar --- */}
       {isCartOpen && (
@@ -696,9 +870,13 @@ const App = () => {
         <div className="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-3 gap-24 mb-24">
           <div>
              <div className="flex items-center space-x-5 mb-12">
-                <div className="w-16 h-16 bg-white rounded-2xl rotate-6 flex items-center justify-center border-2 border-yellow-500 shadow-2xl cursor-pointer overflow-hidden" onClick={() => setActiveTab('inicio')}>
-                   <img src={LOGO_COOP} alt="Logo CEM" className="w-full h-full object-cover" />
-                </div>
+                <div className="w-10 h-10 md:w-14 md:h-14 flex items-center justify-center transition-all duration-500">
+  <img 
+    src="/logos/LogoCoop.png" 
+    alt="Logo CEM" 
+    className="w-full h-full object-contain" 
+  />
+</div>
                 <div>
                   <h4 className="text-white text-3xl font-black leading-none uppercase tracking-tighter italic">CEM</h4>
                   <p className="text-[10px] uppercase tracking-[0.4em] font-bold text-emerald-400 mt-1">Villa Mercedes (SL)</p>
@@ -723,16 +901,39 @@ const App = () => {
           </div>
 
           <div>
-            <h5 className="text-white font-black text-2xl mb-12 uppercase tracking-tighter border-l-4 border-yellow-400 pl-6">Servicios</h5>
-            <ul className="space-y-6">
-              {['Atención a Empresas', 'Showroom Premium', 'Materiales Eléctricos', 'Proyectos Especiales'].map(item => (
-                <li key={item}>
-                  <button onClick={() => setActiveTab('inicio')} className="flex items-center group text-emerald-100/60 hover:text-white transition-all font-bold uppercase text-[11px] tracking-widest text-left">
-                    <ChevronRight size={16} className="mr-3 text-yellow-500 group-hover:translate-x-2 transition-transform" /> {item}
-                  </button>
-                </li>
-              ))}
-            </ul>
+            {/* --- SECCIÓN DE LINKS (Sustituye aquí) --- */}
+<ul className="space-y-6">
+  {(() => {
+    // Definimos los botones aquí para que el código sea ultra-limpio
+    const footerLinks = [
+    { 
+        label: 'Atención a Empresas', 
+        action: () => {
+          setActiveTab('clientes'); // Primero cambia la vista para que el usuario vea la sección
+          window.open('https://wa.me/5492657652584?text=Hola!%20Solicito%20atención%20especializada%20para%20mi%20empresa.', '_blank');
+        } 
+      },
+      { label: 'Showroom Premium', action: () => setSeccionActiva('iluminacion')},
+      { label: 'Materiales Eléctricos', action: () => setSeccionActiva('materiales') },
+      { label: 'Proyectos Especiales', action: () => window.open('https://wa.me/5492657393070', '_blank') }
+    ];
+
+    return footerLinks.map((item) => (
+      <li key={item.label}>
+        <button 
+          onClick={item.action} 
+          className="flex items-center group text-emerald-100/60 hover:text-white transition-all font-bold uppercase text-[11px] tracking-widest text-left outline-none"
+        >
+          <ChevronRight 
+            size={16} 
+            className="mr-3 text-yellow-500 group-hover:translate-x-2 transition-transform" 
+          /> 
+          {item.label}
+        </button>
+      </li>
+    ));
+  })()}
+</ul>
           </div>
         </div>
         
@@ -821,12 +1022,14 @@ const CooperativismoView = () => {
         <div className="flex flex-col lg:flex-row items-center gap-16 p-8 md:p-16">
           <div className="w-full lg:w-1/3 flex justify-center">
             {/* Logo Cooperativo Visual en CSS */}
-            <div className="w-64 h-64 bg-yellow-400 rounded-full border-[10px] border-emerald-700 flex items-center justify-center shadow-2xl rotate-3">
-               <div className="flex space-x-3 items-end">
-                  <div className="w-12 h-28 bg-emerald-800 rounded-t-full"></div>
-                  <div className="w-12 h-28 bg-emerald-800 rounded-t-full"></div>
-               </div>
-            </div>
+            <div className="w-60 h-60 bg-yellow-400 rounded-full border-[0px] border-emerald-700 flex items-center justify-center shadow-2xl rotate-3 overflow-hidden">
+   {/* Reemplazamos los rectángulos verdes por tu imagen real */}
+   <img 
+     src="/logos/LogoCoop.png" 
+     alt="Logo Cooperativa" 
+     className="w-60 h-60 object-contain -rotate-3" 
+   />
+</div>
           </div>
           <div className="w-full lg:w-2/3">
             <h3 className="text-4xl font-black uppercase tracking-tighter text-emerald-950 mb-6">Símbolo de los <span className="text-emerald-600">Dos Pinos</span></h3>
@@ -851,23 +1054,23 @@ const CooperativismoView = () => {
 };
 
 const ConsejoView = () => {
-  const autoridades = [
-  { cargo: "Presidente", nombre: "Juan Antonio Renaudo" },
-  { cargo: "Vicepresidente", nombre: "Héctor Gregorio Aguzzi" },
-  { cargo: "Secretaria", nombre: "María Evelyn Becerra" },
-  { cargo: "Prosecretario", nombre: "Gabriel Enrique Ponisio" },
-  { cargo: "Tesorero", nombre: "Alfredo Lázaro Carrascull" },
-  { cargo: "Protesorero", nombre: "Osvaldo Phillpott" },
-  { 
-    cargo: "Vocales Titulares", 
-    nombres: ["Antonio Payero", "Francisco Luis Saibene", "Jorge Omar De La Rocha", "Carmen Adrian Rivero"] 
-  },
-  { 
-    cargo: "Vocales Suplentes", 
-    nombres: ["Hilda Violeta Monje", "Roque Alfredo Sosa", "Roberto Francisco Capra"] 
-  },
-  { cargo: "Gerente", nombre: "Nilda Alaniz" }
-];
+  const consejoActual = {
+    mesa: [
+      { cargo: "Presidente", nombre: "Juan Antonio Renaudo" },
+      { cargo: "Vicepresidente", nombre: " Héctor Gregorio Aguzzi" },
+      { cargo: "Secretaria", nombre: "María Evelyn Becerra" },
+      { cargo: "Pro-secretario", nombre: "Gabriel Enrique Ponisio" },
+      { cargo: "Tesorero", nombre: "Alfredo Lazaro Carrascull" },
+      { cargo: "Pro-tesorero", nombre: "Osvaldo Phillpott" }
+    ],
+    vocalest: ["Francisco Luis Saibene", "Antonio Payero", "Jorge Omar De La Rocha", "Carmen Adrian Rivero"],
+    vocaless: ["Hilda Violeta Monje", "Roque Alfredo Sosa", "Roberto Francisco Capra"],
+    otros: [
+      { cargo: "Síndico Titular", nombre: "Julio Gaston Dayenoff" },
+      { cargo: "Síndico Suplente", nombre: "Luis Alberto Medina" },
+      { cargo: "Gerente", nombre: "Nilda Ines Alaniz" }
+    ]
+  };
 
   return (
     <div className="bg-white min-h-screen pb-20 animate-in fade-in duration-700">
@@ -938,11 +1141,25 @@ const ConsejoView = () => {
               {/* Vocales y Otros */}
               <div className="grid md:grid-cols-2 gap-12">
                 <div>
-                  <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-emerald-800 mb-6 flex items-center">
-                    <div className="w-6 h-[2px] bg-emerald-800 mr-3"></div> Vocales Titulares
-                  </h4>
+                 <div className="mt-10 mb-6"> 
+  <h3 className="mt-16 mb-4 text-xl font-bold uppercase tracking-wider">
+  Vocales Titulares
+</h3>
+</div>
                   <ul className="space-y-3">
-                    {consejoActual.vocales.map((v, i) => (
+                    {consejoActual.vocalest.map((v, i) => (
+                      <li key={i} className="text-sm font-bold text-gray-600 flex items-center uppercase">
+                        <ChevronRight size={14} className="mr-2 text-yellow-500"/> {v}
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="mt-10 mb-6"> 
+  <h3 className="mt-16 mb-4 text-xl font-bold uppercase tracking-wider">
+  Vocales Suplentes
+</h3>
+</div>
+                  <ul className="space-y-3">
+                    {consejoActual.vocaless.map((v, i) => (
                       <li key={i} className="text-sm font-bold text-gray-600 flex items-center uppercase">
                         <ChevronRight size={14} className="mr-2 text-yellow-500"/> {v}
                       </li>
@@ -984,7 +1201,7 @@ const NosotrosView = () => {
         </div>
         <div className="container mx-auto px-4 relative z-10">
           <h2 className="text-5xl md:text-7xl font-black uppercase italic mb-4 tracking-tighter">Quiénes <span className="text-yellow-400">Somos</span></h2>
-          <p className="max-w-2xl text-emerald-100/60 font-medium italic">"Militantes del cooperativismo al servicio de Villa Mercedes."</p>
+          <p className="max-w-2xl text-emerald-100/60 font-medium italic">"Cooperativistas al servicio de Villa Mercedes y de toda la provincia."</p>
         </div>
       </section>
 
@@ -1028,60 +1245,300 @@ const NosotrosView = () => {
 };
 const BeneficiosView = ({ WA_ASOCIARSE, setActiveTab }) => {
   return (
-    <div className="animate-in slide-in-from-bottom-4 duration-700">
-      {/* HEADER BENEFICIOS */}
-      <section className="bg-emerald-900 py-32 text-white overflow-hidden relative">
-        <div className="absolute top-0 right-0 w-64 h-64 bg-yellow-400 rounded-full filter blur-[100px] opacity-20 -mr-20 -mt-20"></div>
+    <div className="bg-emerald-50 min-h-screen py-24 animate-in fade-in duration-700">
+      <div className="container mx-auto px-4 text-center mb-16">
+        <h2 className="text-5xl font-black text-emerald-950 uppercase tracking-tighter italic mb-4">Beneficios para <span className="text-emerald-600">Asociados</span></h2>
+        <p className="text-gray-500 font-bold uppercase tracking-widest text-xs">Exclusivo para la comunidad CEM</p>
+      </div>
+      <div className="container mx-auto px-4 max-w-4xl bg-white p-12 rounded-[3rem] shadow-xl text-center border border-emerald-100">
+         <Percent size={60} className="text-yellow-500 mx-auto mb-8" />
+         <h3 className="text-3xl font-black text-emerald-900 mb-6 uppercase tracking-tighter">7% DE DESCUENTO ADICIONAL</h3>
+         <p className="text-gray-600 mb-10 leading-relaxed font-medium italic">
+           Todos nuestros asociados disfrutan de un beneficio exclusivo en la compra de materiales eléctricos e iluminación en nuestro showroom. 
+         </p>
+         <div className="flex flex-wrap justify-center gap-4">
+           <a href={`https://wa.me/${WA_ASOCIARSE}`} target="_blank" className="bg-emerald-800 text-white px-8 py-4 rounded-2xl font-black uppercase tracking-widest hover:bg-emerald-900 transition-all shadow-lg flex items-center">
+             <MessageCircle size={20} className="mr-3" /> Asociarse Ahora
+           </a>
+           <button onClick={() => setActiveTab('inicio')} className="bg-gray-100 text-emerald-950 px-8 py-4 rounded-2xl font-black uppercase tracking-widest hover:bg-gray-200 transition-all">
+             Volver al Inicio
+           </button>
+         </div>
+      </div>
+    </div>
+  );
+};
+
+const EducacionView = () => {
+  return (
+    <div className="bg-white min-h-screen pb-20 animate-in fade-in slide-in-from-bottom-4 duration-700">
+      {/* HEADER SECCIÓN */}
+      <section className="py-24 bg-emerald-950 text-white relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-yellow-400 rounded-full filter blur-[100px] translate-y-1/2"></div>
+        </div>
         <div className="container mx-auto px-4 relative z-10">
-          <button 
-            onClick={() => setActiveTab('inicio')} 
-            className="flex items-center text-emerald-300 font-black text-[10px] uppercase mb-12 hover:text-white transition-colors"
-          >
-            <ArrowLeft size={16} className="mr-2"/> Volver al Inicio
-          </button>
-          <h2 className="text-6xl md:text-8xl font-black uppercase italic leading-none mb-6">
-            SER ASOCIADO <br/><span className="text-yellow-400">TIENE PREMIO.</span>
-          </h2>
-          <p className="text-emerald-100/60 font-bold uppercase tracking-widest text-xs">Beneficios exclusivos para miembros de la cooperativa</p>
+          <span className="text-yellow-400 font-black uppercase tracking-[0.4em] text-[10px] mb-4 block">Formación y Futuro</span>
+          <h2 className="text-5xl md:text-7xl font-black uppercase italic mb-4 tracking-tighter">Educación <span className="text-emerald-400">Cooperativa</span></h2>
+          <p className="max-w-3xl text-emerald-100/60 font-medium italic leading-relaxed">
+            "La educación es un derecho esencial que permite lograr mayor conciencia de los derechos y obligaciones en los asociados."
+          </p>
         </div>
       </section>
 
-      {/* TARJETAS DE BENEFICIOS */}
-      <section className="container mx-auto px-4 -mt-20 grid grid-cols-1 md:grid-cols-3 gap-8 pb-32">
-        <div className="bg-white p-12 rounded-[3rem] shadow-2xl flex flex-col items-center text-center border border-gray-100 hover:translate-y-[-10px] transition-transform">
-          <div className="w-16 h-16 bg-yellow-100 rounded-2xl flex items-center justify-center text-yellow-600 mb-6">
-            <Percent size={32} />
+      {/* BLOQUE INTRODUCTORIO */}
+      <section className="container mx-auto px-4 py-20">
+        <div className="max-w-5xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+          <div className="space-y-6">
+            <div className="h-1 w-20 bg-yellow-400 rounded-full mb-8"></div>
+            <p className="text-gray-600 text-lg leading-relaxed font-medium">
+              La educación cooperativa debe orientarse a generar conciencia entre los asociados y la comunidad sobre la importancia de la cooperación y la ayuda mutua.
+            </p>
+            <p className="text-gray-500 leading-relaxed">
+              Buscamos la organización comunitaria para la transformación de las condiciones de vida de las personas, logradas mediante la creación y participación en empresas cooperativas.
+            </p>
           </div>
-          <h3 className="text-4xl font-black mb-4 uppercase italic tracking-tighter text-emerald-950">7% OFF</h3>
-          <p className="text-gray-500 font-medium text-sm">Descuento directo en todas tus compras de materiales eléctricos presentando tu carnet.</p>
+          <div className="bg-emerald-50 p-10 rounded-[3rem] border border-emerald-100 relative">
+            <Lightbulb className="text-yellow-500 mb-6" size={40} />
+            <h4 className="text-emerald-900 font-black uppercase text-xl mb-4 tracking-tighter">Nuestra Institución</h4>
+            <p className="text-emerald-800/70 text-sm font-medium leading-relaxed italic">
+              El programa de Educación Cooperativa cuenta con el respaldo unánime del Consejo de Administración y se implementa en forma continua desde inicios de este nuevo siglo.
+            </p>
+          </div>
         </div>
+      </section>
 
-        <div className="bg-emerald-800 p-12 rounded-[3rem] shadow-2xl text-white flex flex-col items-center text-center border border-emerald-700 hover:translate-y-[-10px] transition-transform">
-          <div className="w-16 h-16 bg-emerald-700 rounded-2xl flex items-center justify-center text-yellow-400 mb-6 shadow-inner">
-            <Gift size={32} />
+      {/* GRID DE ACTIVIDADES Y ALIANZAS */}
+      <section className="container mx-auto px-4 py-10">
+        <div className="grid md:grid-cols-3 gap-8">
+          {/* Tarjeta 1: Biblioteca Rivadavia */}
+          <div className="bg-white p-8 rounded-[2.5rem] shadow-xl border border-gray-100 hover:-translate-y-2 transition-transform">
+            <div className="w-12 h-12 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mb-6">
+              <Database size={24} />
+            </div>
+            <h5 className="font-black uppercase text-emerald-950 text-sm mb-4">Alianza Cultural</h5>
+            <p className="text-xs text-gray-500 font-bold leading-relaxed">
+              Las actividades se implementan a través de la Biblioteca e Instituto de Cultura Popular "Bernardino Rivadavia", apoyando activamente su sostenimiento.
+            </p>
           </div>
-          <h3 className="text-4xl font-black mb-4 uppercase italic tracking-tighter">PROMOS</h3>
-          <p className="text-emerald-100/70 font-medium text-sm">Acceso prioritario a preventas de luminaria y eventos exclusivos en nuestro Showroom.</p>
+
+          {/* Tarjeta 2: Talleres Escolares */}
+          <div className="bg-white p-8 rounded-[2.5rem] shadow-xl border border-gray-100 hover:-translate-y-2 transition-transform">
+            <div className="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center mb-6">
+              <Star size={24} />
+            </div>
+            <h5 className="font-black uppercase text-emerald-950 text-sm mb-4">Escuelas y Talleres</h5>
+            <p className="text-xs text-gray-500 font-bold leading-relaxed">
+              Realizamos talleres en escuelas primarias y secundarias haciendo eje en el desarrollo de los valores del Cooperativismo.
+            </p>
+          </div>
+
+          {/* Tarjeta 3: Capacitación Oficios */}
+          <div className="bg-white p-8 rounded-[2.5rem] shadow-xl border border-gray-100 hover:-translate-y-2 transition-transform">
+            <div className="w-12 h-12 bg-yellow-50 text-yellow-600 rounded-2xl flex items-center justify-center mb-6">
+              <Zap size={24} />
+            </div>
+            <h5 className="font-black uppercase text-emerald-950 text-sm mb-4">Oficios y Práctica</h5>
+            <p className="text-xs text-gray-500 font-bold leading-relaxed">
+              Incluimos capacitación en oficios como Electricidad Domiciliaria, funciones de títeres y talleres para padres.
+            </p>
+          </div>
         </div>
+      </section>
 
-        <div className="bg-white p-12 rounded-[3rem] shadow-2xl flex flex-col items-center text-center border border-gray-100 hover:translate-y-[-10px] transition-transform">
-          <div className="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-600 mb-6">
-            <CheckCircle2 size={32} />
+      {/* SECCIÓN DESTACADA: CENTRO DE EDUCACIÓN */}
+      <section className="container mx-auto px-4 py-20">
+        <div className="bg-emerald-900 rounded-[4rem] p-10 md:p-20 text-white flex flex-col lg:flex-row gap-12 items-center">
+          <div className="flex-1">
+            <span className="text-yellow-400 font-black uppercase tracking-widest text-[10px] mb-4 block">Mención Especial</span>
+            <h3 className="text-4xl font-black uppercase tracking-tighter mb-6 italic">Centro de Educación Cooperativa</h3>
+            <p className="text-emerald-100/70 leading-relaxed mb-8">
+              Ubicado en el Aula 1 de la Biblioteca "Bernardino Rivadavia", este espacio ha sido especialmente ambientado para la formación. Su inauguración contó con la presencia de especialistas como el Dr. Marcelo Leonardo García.
+            </p>
+            <div className="flex items-center space-x-4">
+              <div className="px-6 py-3 bg-white/10 backdrop-blur-md rounded-2xl border border-white/10 text-xs font-bold uppercase tracking-widest">
+                +100 Asistentes
+              </div>
+              <div className="px-6 py-3 bg-white/10 backdrop-blur-md rounded-2xl border border-white/10 text-xs font-bold uppercase tracking-widest">
+                Artistas Locales
+              </div>
+            </div>
           </div>
-          <h3 className="text-4xl font-black mb-4 uppercase italic tracking-tighter text-emerald-950">UNIRSE</h3>
-          <p className="text-gray-500 font-medium text-sm mb-6">¿Aún no eres parte? Sumate hoy mismo a la comunidad cooperativa.</p>
-          <a 
-            href={`https://wa.me/${WA_ASOCIARSE}`} 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="w-full py-4 bg-emerald-900 text-white rounded-2xl font-black uppercase text-xs tracking-widest hover:bg-emerald-700 transition-colors"
-          >
-            Pedir Información
-          </a>
+          <div className="w-full lg:w-1/3 aspect-video bg-emerald-800 rounded-[3rem] overflow-hidden border-8 border-emerald-800/50 shadow-2xl">
+            <img 
+              src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&q=80&w=800" 
+              className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+              alt="Educación CEM"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* CIERRE ÉTICO */}
+      <section className="container mx-auto px-4 py-10 text-center">
+        <div className="max-w-3xl mx-auto">
+          <p className="text-emerald-900 text-xl font-black italic leading-relaxed">
+            "El espíritu cooperativista está presente en nuestro accionar cotidiano, trabajando por nuevas generaciones de argentinos más solidarios e involucrados."
+          </p>
         </div>
       </section>
     </div>
   );
 };
+
+// --- NUEVO COMPONENTE: ClientesView ---
+const ClientesView = () => {
+  // Función para obtener iniciales (Ej: "Glucovil Argentina SA" -> "GA")
+  const getIniciales = (nombre) => {
+    return nombre
+      .split(' ')
+      .filter(palabra => palabra.length > 2) // Ignora "de", "sa", "la"
+      .map(palabra => palabra[0])
+      .slice(0, 2)
+      .join('');
+  };
+
+  const categoriasClientes = [
+    {
+      titulo: "Grandes Industrias",
+      items: [
+        { nombre: "GLUCOVIL ARGENTINA SA", logo: "" }, // Si dejas el logo vacío "", usará las iniciales
+        { nombre: "LEDESMA SAAI", logo: "" },
+        { nombre: "COMPLEJO NIZA SA", logo: "" },
+        { nombre: "EMPRESA YPF", logo: "" },
+        { nombre: "ANTIGUAS ESTANCIAS DON ROBERTO", logo: "" }
+      ]
+    },
+    {
+      titulo: "Organismos y Universidades",
+      items: [
+        { nombre: "MUNICIPALIDAD DE VILLA MERCEDES", logo: "" },
+        { nombre: "MUNICIPALIDAD DE JUSTO DARACT", logo: "" },
+        { nombre: "MUNICIPALIDAD DE JUAN JORBA", logo: "" },
+        { nombre: "UNIVERSIDAD NACIONAL DE SAN LUIS", logo: "" },
+        { nombre: "UNIVERSIDAD NACIONAL DE VILLA MERCEDES", logo: "" },
+        { nombre: "UNIVERSIDAD PROVINCIAL DE OFICIOS", logo: "" }
+      ]
+    },
+    {
+      titulo: "Empresas y Comercios",
+      items: [
+        { nombre: "CASA RIBEIRO", logo: "" },
+        { nombre: "REBOTTARO REPUESTOS", logo: "" },
+        { nombre: "THOR AUTOMATIZACION INDUSTRIAL", logo: "" }
+      ]
+    },
+    {
+      titulo: "Profesionales e Instaladores",
+      items: [
+        { nombre: "INSTALACIONES ELECTRICAS IDEM", logo: "" },
+        { nombre: "JORGE BARRERA INSTALACIONES", logo: "" },
+        { nombre: "ELECTRO SAN LUIS", logo: "" }
+      ]
+    }
+  ];
+
+  return (
+    <div className="bg-white min-h-screen pb-20 animate-in fade-in duration-700">
+      {/* HERO SECCIÓN */}
+      <section className="py-24 bg-white text-emerald-950 relative border-b border-gray-100">
+        <div className="container mx-auto px-4 text-center">
+          <span className="text-emerald-500 font-black uppercase tracking-[0.5em] text-[10px] mb-4 block">Trayectoria y Confianza</span>
+          <h2 className="text-5xl md:text-7xl font-black uppercase italic mb-6 tracking-tighter">
+  Nuestros <span style={{ WebkitTextStroke: '2px #10b981', color: 'transparent' }}>Clientes</span>
+</h2>
+          <div className="h-1 w-20 bg-yellow-400 mx-auto"></div>
+        </div>
+      </section>
+
+      {/* GRID DE CLIENTES */}
+      <section className="container mx-auto px-4 py-20">
+        {categoriasClientes.map((cat, idx) => (
+          <div key={idx} className="mb-24">
+            <h3 className="text-gray-400 font-black uppercase tracking-[0.3em] text-[11px] mb-12 text-center">{cat.titulo}</h3>
+            
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-px bg-gray-100 border border-gray-100 rounded-[3rem] overflow-hidden">
+              {cat.items.map((cliente, cIdx) => (
+                <div 
+                  key={cIdx} 
+                  className="group bg-white p-10 flex flex-col items-center justify-center text-center min-h-[220px] transition-all duration-500 hover:bg-emerald-950"
+                >
+                  {/* LOGO O INICIALES */}
+                  <div className="w-full h-20 flex items-center justify-center mb-6">
+                    <div className="transition-all duration-500 transform group-hover:scale-110">
+                      {cliente.logo ? (
+                        <img 
+                          src={cliente.logo} 
+                          alt={cliente.nombre} 
+                          className="max-h-16 w-auto object-contain grayscale group-hover:grayscale-0 group-hover:brightness-0 group-hover:invert transition-all"
+                        />
+                      ) : (
+                        <div className="w-16 h-16 border-2 border-gray-100 group-hover:border-emerald-800 flex items-center justify-center rounded-2xl transition-colors">
+                          <span className="text-2xl font-black text-gray-200 group-hover:text-white tracking-tighter uppercase italic">
+                            {getIniciales(cliente.nombre)}
+                          </span>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                  
+                  <span className="text-[10px] font-black uppercase tracking-widest text-gray-400 group-hover:text-yellow-400 transition-colors duration-500 leading-tight">
+                    {cliente.nombre}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </section>
+
+      {/* CIERRE "Y USTED" */}
+      <section className="container mx-auto px-4">
+        <div className="max-w-5xl mx-auto bg-emerald-950 rounded-[4rem] p-16 text-center relative overflow-hidden group">
+          <div className="relative z-10">
+            <h3 className="text-5xl md:text-8xl font-black uppercase italic mb-6 tracking-tighter text-white transition-transform group-hover:scale-105 duration-700">
+              ... y <span className="text-yellow-400">Usted?</span>
+            </h3>
+            <p className="text-emerald-100/50 font-bold mb-10 uppercase tracking-[0.3em] text-xs">
+              Únase a las empresas líderes que ya confían en la CEM
+            </p>
+            <button 
+  onClick={() => window.open(`https://wa.me/5492657652584?text=${encodeURIComponent('Hola! Vengo desde el portal de la CEM. Me interesa recibir asesoramiento corporativo para mi empresa.')}`, '_blank')}
+  className="bg-white text-emerald-950 font-black px-12 py-5 rounded-2xl uppercase text-xs tracking-widest hover:bg-yellow-400 transition-all transform hover:scale-105 active:scale-95 shadow-2xl"
+>
+  Solicitar Asesoramiento Corporativo
+</button>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+const productosShowroom = [
+  {
+    id: 1,
+    nombre: "Cable Unipolar 2.5mm",
+    categoria: "Conductores",
+    descripcion: "Normalizado IRAM, ideal para instalaciones domiciliarias.",
+    imagen: "/img/cable-25.jpg" // Asegúrate de subir la foto a la carpeta public/img
+  },
+  {
+    id: 2,
+    nombre: "Panel LED 18W",
+    categoria: "Iluminación",
+    descripcion: "Luz fría/cálida, alta eficiencia energética para oficinas.",
+    imagen: "/img/panel-led.jpg"
+  },
+  {
+    id: 3,
+    nombre: "Interruptor Termomagnético 2x20A",
+    categoria: "Protección",
+    descripcion: "Protección confiable para circuitos eléctricos.",
+    imagen: "/img/termica.jpg"
+  }
+];
+
+
 
 export default App;
