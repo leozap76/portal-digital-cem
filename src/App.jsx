@@ -387,10 +387,10 @@ const App = () => {
   };
 
   const featuredProducts = [
-    { id: 1, name: "Candelabro Premium Oro", price: "$145.900", category: "Colgante Obit", isPremium: true, image: "https://180grados.com.ar/wp-content/uploads/2026/01/Diseno-sin-titulo-2026-01-23T170103.717.jpg.webp" },
-    { id: 2, name: "Cable Unipolar 2.5mm 100m", price: "$90.000", category: "Electricidad", isPremium: false, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFPdLxd9Ow4BTNpqDKiwGeuEdFRerLCZbR9A&s" },
-    { id: 3, name: "Sigma", price: "$34.000", category: "Artefacto de pared", isPremium: true, image: "https://180grados.com.ar/wp-content/uploads/2024/12/Diseno-sin-titulo-2024-12-10T122943.798.jpg.webp" },
-    { id: 4, name: "Térmica Chint 2x25A", price: "$9.200", category: "Instalación", isPremium: false, image: "https://http2.mlstatic.com/D_NQ_NP_755335-MLA99585531334_122025-O.webp" }
+    { id: 1, name: "Candelabro Premium Oro", price: "", category: "Colgante Obit", isPremium: true, image: "https://180grados.com.ar/wp-content/uploads/2026/01/Diseno-sin-titulo-2026-01-23T170103.717.jpg.webp" },
+    { id: 2, name: "Cable Unipolar 2.5mm 100m", price: "", category: "Electricidad", isPremium: false, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFPdLxd9Ow4BTNpqDKiwGeuEdFRerLCZbR9A&s" },
+    { id: 3, name: "Sigma", price: "", category: "Artefacto de pared", isPremium: true, image: "https://180grados.com.ar/wp-content/uploads/2024/12/Diseno-sin-titulo-2024-12-10T122943.798.jpg.webp" },
+    { id: 4, name: "Térmica Chint 2x25A", price: "", category: "Instalación", isPremium: false, image: "https://http2.mlstatic.com/D_NQ_NP_755335-MLA99585531334_122025-O.webp" }
   ];
 
   return (
