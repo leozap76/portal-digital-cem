@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import imagenNegocio from './mi_negocio1.png';
+import imagenNegocio from './mi_negocio1.webp';
 
 import { 
   Share2,
@@ -476,9 +476,7 @@ const App = () => {
                <span className="flex items-center"><Clock size={12} className="mr-1.5"/> Lunes a Viernes de 08:30 - 18:30 / Sabados de 8:15 - 12:45</span>
             </div>
             <div className="flex space-x-6 items-center">
-              <button onClick={handleAdminToggle} className={`hover:text-yellow-400 transition-colors flex items-center font-bold ${isAdminMode ? 'text-yellow-400' : ''}`}>
-                <Lock size={12} className="mr-1.5" /> {isAdminMode ? "SALIR ADMIN" : "ACCESO ADMIN"}
-              </button>
+              
               <div className="h-3 w-[1px] bg-white/20"></div>
               <button 
                 onClick={() => setActiveTab('beneficios')}
@@ -585,7 +583,7 @@ const App = () => {
     <div className="flex items-center space-x-2 md:space-x-4 group cursor-pointer" onClick={() => setActiveTab('inicio')}>
       <div className="w-10 h-10 md:w-14 md:h-14 flex items-center justify-center transition-all duration-500">
   <img 
-    src="/logos/LogoCoop.png" 
+    src="/logos/LogoCoop.webp" 
     alt="Logo CEM" 
     className="w-full h-full object-contain" 
   />
@@ -673,9 +671,13 @@ const App = () => {
                   <button className="bg-yellow-400 text-emerald-950 px-10 py-5 rounded-2xl font-black text-lg hover:bg-yellow-500 transition-all shadow-2xl flex items-center group">
                     VER CATÁLOGO TÉCNICO <ArrowRight className="ml-3 group-hover:translate-x-2 transition-transform" size={24} />
                   </button>
-                  <button className="bg-white/10 backdrop-blur-md text-white border-2 border-white/20 px-10 py-5 rounded-2xl font-black text-lg hover:bg-white hover:text-emerald-950 transition-all">
-                    SHOWROOM PREMIUM
-                  </button>
+                  <button 
+  onClick={() => setSeccionActiva('iluminacion')}
+  className="bg-white/10 backdrop-blur-md text-white border-2 border-white/20 px-10 py-5 rounded-2xl font-black text-lg hover:bg-white hover:text-emerald-950 transition-all transform hover:scale-105 active:scale-95 flex items-center gap-3"
+>
+  <Lightbulb size={24} className="text-yellow-400" />
+  SHOWROOM PREMIUM
+</button>
                 </div>
               </div>
             </div>
@@ -941,7 +943,22 @@ const App = () => {
           <p className="text-[10px] uppercase tracking-[0.5em] font-black text-emerald-700/60">
             &copy; 2026 Cooperativa de Electricidad y otros servicios de Mercedes (San Luis) Ltda.
           </p>
+          {/* Datos del Productor Centrados y Protegidos de Traducción */}
+      <div className="flex items-center justify-center space-x-1">
+        <span>Desarrollado por</span>
+        <a 
+          href="https://digitallab.com.ar" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          translate="no"
+          className="font-semibold text-white hover:text-blue-400 transition-all border-b border-transparent hover:border-blue-400 notranslate"
+        >
+          Digitallab
+        </a>
+      </div>
         </div>
+        
+        
       </footer>
 
       <style dangerouslySetInnerHTML={{ __html: `
@@ -1402,40 +1419,40 @@ const ClientesView = () => {
     {
       titulo: "Grandes Industrias",
       items: [
-        { nombre: "GLUCOVIL ARGENTINA SA", logo: "" }, // Si dejas el logo vacío "", usará las iniciales
-        { nombre: "LEDESMA SAAI", logo: "" },
-        { nombre: "COMPLEJO NIZA SA", logo: "" },
-        { nombre: "EMPRESA YPF", logo: "" },
-        { nombre: "ANTIGUAS ESTANCIAS DON ROBERTO", logo: "" }
+        { nombre: "GLUCOVIL ARGENTINA SA", logo: "logos/logoGlucovil.webp" }, // Si dejas el logo vacío "", usará las iniciales
+        { nombre: "LEDESMA SAAI", logo: "logos/LogoLedesma.webp" },
+        { nombre: "COMPLEJO NIZA SA", logo: "logos/logoNiza.webp" },
+        { nombre: "EMPRESA YPF", logo: "logos/logoYpf.webp" },
+        { nombre: "ANTIGUAS ESTANCIAS DON ROBERTO", logo: "logos/logoDonroberto.webp" }
       ]
     },
     {
       titulo: "Organismos y Universidades",
       items: [
-        { nombre: "MUNICIPALIDAD DE VILLA MERCEDES", logo: "" },
-        { nombre: "MUNICIPALIDAD DE JUSTO DARACT", logo: "" },
-        { nombre: "MUNICIPALIDAD DE JUAN JORBA", logo: "" },
-        { nombre: "UNIVERSIDAD NACIONAL DE SAN LUIS", logo: "" },
-        { nombre: "UNIVERSIDAD NACIONAL DE VILLA MERCEDES", logo: "" },
-        { nombre: "UNIVERSIDAD PROVINCIAL DE OFICIOS", logo: "" }
+        { nombre: "MUNICIPALIDAD DE VILLA MERCEDES", logo: "logos/logoMuniVM.webp" },
+        { nombre: "MUNICIPALIDAD DE JUSTO DARACT", logo: "logos/logoMuniDaract.webp" },
+        { nombre: "MUNICIPALIDAD DE JUAN JORBA", logo: "logos/logoMuniJorba.webp" },
+        { nombre: "UNIVERSIDAD NACIONAL DE SAN LUIS", logo: "logos/logoUNSL.webp" },
+        { nombre: "UNIVERSIDAD NACIONAL DE VILLA MERCEDES", logo: "logos/logoUNVM.webp" },
+        { nombre: "UNIVERSIDAD PROVINCIAL DE OFICIOS", logo: "logos/logoUpro.webp" }
       ]
     },
     {
       titulo: "Empresas y Comercios",
       items: [
-        { nombre: "CASA RIBEIRO", logo: "" },
+        { nombre: "PARRILLA REPUESTOS", logo: "logos/LogoParrilla.webp" },
         { nombre: "REBOTTARO REPUESTOS", logo: "" },
-        { nombre: "THOR AUTOMATIZACION INDUSTRIAL", logo: "" }
+        { nombre: "THOR AUTOMATIZACION INDUSTRIAL", logo: "logos/logoThor.webp" }
       ]
     },
-    {
+    /*{
       titulo: "Profesionales e Instaladores",
       items: [
         { nombre: "INSTALACIONES ELECTRICAS IDEM", logo: "" },
         { nombre: "JORGE BARRERA INSTALACIONES", logo: "" },
         { nombre: "ELECTRO SAN LUIS", logo: "" }
       ]
-    }
+    }*/
   ];
 
   return (
