@@ -874,7 +874,7 @@ const App = () => {
              <div className="flex items-center space-x-5 mb-12">
                 <div className="w-10 h-10 md:w-14 md:h-14 flex items-center justify-center transition-all duration-500">
   <img 
-    src="/logos/LogoCoop.png" 
+    src="/logos/LogoCoop.webp" 
     alt="Logo CEM" 
     className="w-full h-full object-contain" 
   />
@@ -1042,7 +1042,7 @@ const CooperativismoView = () => {
             <div className="w-60 h-60 bg-yellow-400 rounded-full border-[0px] border-emerald-700 flex items-center justify-center shadow-2xl rotate-3 overflow-hidden">
    {/* Reemplazamos los rectángulos verdes por tu imagen real */}
    <img 
-     src="/logos/LogoCoop.png" 
+     src="/logos/LogoCoop.webp" 
      alt="Logo Cooperativa" 
      className="w-60 h-60 object-contain -rotate-3" 
    />
