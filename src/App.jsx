@@ -31,7 +31,14 @@ import {
   ShieldCheck,
   CheckCircle2,
   Gift,
-  ArrowLeft
+  ArrowLeft,
+  ExternalLink,
+  Users,
+  Award,
+  BadgeCheck,
+  Trophy,
+  Heart
+  
 } from 'lucide-react';
 
 /**
@@ -124,6 +131,107 @@ const VistaMateriales = ({ alVolver }) => {
           </div>
         </div>
       </div>
+    </div>
+  );
+};
+
+const VistaEleguirnos = ({ alVolver }) => {
+  const diferenciales = [
+    {
+      icono: <Trophy className="text-yellow-500" size={40} />,
+      titulo: "Años de Trayectoria",
+      desc: "Décadas iluminando Mercedes y la región con compromiso cooperativo."
+    },
+    {
+      icono: <Users className="text-blue-500" size={40} />,
+      titulo: "Equipo Especializado",
+      desc: "Asesoramiento técnico profesional para cada etapa de tu proyecto."
+    },
+    {
+      icono: <Database className="text-emerald-500" size={40} />,
+      titulo: "Variedad de Stock",
+      desc: "El mayor inventario de materiales eléctricos y de seguridad de la zona."
+    },
+    {
+      icono: <BadgeCheck className="text-purple-500" size={40} />,
+      titulo: "Calidad Certificada",
+      desc: "Solo trabajamos con marcas líderes que cumplen normas IRAM y certificaciones internacionales."
+    },
+    {
+      icono: <Percent className="text-orange-500" size={40} />,
+      titulo: "Precios Competitivos",
+      desc: "Al ser una cooperativa, nuestro objetivo es el beneficio del socio y el cliente."
+    },
+    {
+      icono: <Heart className="text-red-500" size={40} />,
+      titulo: "Responsabilidad Social",
+      desc: "Tu compra vuelve a la comunidad a través de mejores servicios y obras locales."
+    }
+  ];
+
+  return (
+    <div className="min-h-screen bg-neutral-950 text-white animate-in slide-in-from-right duration-500">
+      <header className="p-6 md:p-10 flex items-center justify-between border-b border-white/10">
+        <button 
+          onClick={alVolver} 
+          className="flex items-center text-white/50 hover:text-white transition-all font-black uppercase text-[10px] tracking-[0.4em] group"
+        >
+          <ChevronLeft size={16} className="mr-2 group-hover:-translate-x-1 transition-transform" /> Volver
+        </button>
+        <div className="text-right">
+          <p className="text-emerald-500 font-black uppercase tracking-[0.5em] text-[10px]">Institucional</p>
+        </div>
+      </header>
+
+      <main className="container mx-auto px-6 py-20">
+        <div className="max-w-4xl mx-auto text-center mb-24">
+          <div className="inline-block p-3 rounded-full bg-emerald-500/10 border border-emerald-500/20 mb-6">
+            <ShieldCheck className="text-emerald-500" size={32} />
+          </div>
+          <h2 className="text-5xl md:text-8xl font-black uppercase italic tracking-tighter mb-8 leading-none">
+            La confianza <br />
+            <span className="text-transparent font-outline-white">de ser Socios</span>
+          </h2>
+          <p className="text-neutral-400 text-lg md:text-xl font-medium max-w-2xl mx-auto">
+            Elegir a la CEM no es solo una compra, es formar parte de una institución que reinvierte en tu ciudad.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {diferenciales.map((item, idx) => (
+            <div 
+              key={idx} 
+              className="bg-neutral-900/50 border border-white/5 p-10 rounded-[3rem] hover:border-emerald-500/30 transition-all group"
+            >
+              <div className="mb-6 transform group-hover:scale-110 transition-transform duration-500">
+                {item.icono}
+              </div>
+              <h3 className="text-2xl font-black uppercase italic tracking-tighter mb-4 group-hover:text-emerald-400 transition-colors">
+                {item.titulo}
+              </h3>
+              <p className="text-neutral-500 font-bold text-sm leading-relaxed uppercase tracking-widest">
+                {item.desc}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-32 p-12 bg-emerald-600 rounded-[3rem] relative overflow-hidden group">
+          <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-10">
+            <div className="max-w-xl text-center md:text-left">
+              <h4 className="text-4xl font-black uppercase italic tracking-tighter text-white mb-4">¿Necesitaa alguna consulta o presupuesto ?</h4>
+              <p className="text-emerald-100 font-bold uppercase tracking-widest text-xs">Nuestro equipo técnico está listo para ayudarte.</p>
+            </div>
+            <button 
+  onClick={() => window.open('https://wa.me/5492657393070?text=Hola!%20Deseo%20hablar%20con%20un%20asesor%20de%20la%20CEM', '_blank')}
+  className="bg-neutral-950 text-white px-12 py-5 rounded-2xl font-black uppercase text-xs tracking-[0.3em] hover:bg-white hover:text-emerald-950 transition-all shadow-2xl"
+>
+  Hablar con un asesor
+</button>
+          </div>
+          <Zap className="absolute -right-20 -bottom-20 text-emerald-500/20" size={400} />
+        </div>
+      </main>
     </div>
   );
 };
@@ -668,9 +776,12 @@ const App = () => {
                   Acompañamos el crecimiento de Villa Mercedes con materiales eléctricos certificados, iluminación de vanguardia y el compromiso cooperativo de siempre.
                 </p>
                 <div className="flex flex-wrap gap-6">
-                  <button className="bg-yellow-400 text-emerald-950 px-10 py-5 rounded-2xl font-black text-lg hover:bg-yellow-500 transition-all shadow-2xl flex items-center group">
-                    VER CATÁLOGO TÉCNICO <ArrowRight className="ml-3 group-hover:translate-x-2 transition-transform" size={24} />
-                  </button>
+                 <button  
+  onClick={() => setSeccionActiva('eleguirnos')} 
+  className="bg-yellow-400 text-emerald-950 px-10 py-5 rounded-2xl font-black text-lg hover:bg-yellow-500 transition-all shadow-2xl flex items-center group"
+>
+  POR QUE ELEGUIRNOS  <ArrowRight className="ml-3 group-hover:translate-x-2 transition-transform" size={24} />
+</button>
                   <button 
   onClick={() => setSeccionActiva('iluminacion')}
   className="bg-white/10 backdrop-blur-md text-white border-2 border-white/20 px-10 py-5 rounded-2xl font-black text-lg hover:bg-white hover:text-emerald-950 transition-all transform hover:scale-105 active:scale-95 flex items-center gap-3"
@@ -688,7 +799,7 @@ const App = () => {
               <div className="group relative h-[500px] rounded-[3rem] overflow-hidden cursor-pointer shadow-2xl bg-gray-100" onClick={() => setSeccionActiva('materiales')}>
                 
                 <img 
-                    src="https://images.unsplash.com/photo-1544724569-5f546fd6f2b5?auto=format&fit=crop&q=80&w=1000" 
+                    src="/logos/fondoElectr.webp"  
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" 
                     alt="Materiales Eléctricos CEM"
                 />
@@ -705,7 +816,7 @@ const App = () => {
               <div className="group relative h-[500px] rounded-[3rem] overflow-hidden cursor-pointer shadow-2xl" onClick={() => setSeccionActiva('iluminacion')}>
                 
                 <img 
-                    src="https://180grados.com.ar/wp-content/uploads/2024/06/Diseno-sin-titulo-65.jpg.webp" 
+                    src="/logos/fondoilumin.webp" 
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" 
                     alt="Iluminación CEM" 
                 />
@@ -801,6 +912,11 @@ const App = () => {
   {/* NUEVA VISTA DE MATERIALES */}
 {seccionActiva === 'materiales' && (
   <VistaMateriales alVolver={() => setSeccionActiva('inicio')} />
+)}
+
+{/* NUEVA VISTA DE POR QUE ELEGUIRNOS */}
+{seccionActiva === 'eleguirnos' && (
+  <VistaEleguirnos alVolver={() => setSeccionActiva('inicio')} />
 )}
 
 {/* NUEVA VISTA DE ILUMINACIÓN */}
@@ -915,7 +1031,7 @@ const App = () => {
           window.open('https://wa.me/5492657652584?text=Hola!%20Solicito%20atención%20especializada%20para%20mi%20empresa.', '_blank');
         } 
       },
-      { label: 'Showroom Premium', action: () => setSeccionActiva('iluminacion')},
+      { label: 'Sala de exposicion', action: () => setSeccionActiva('iluminacion')},
       { label: 'Materiales Eléctricos', action: () => setSeccionActiva('materiales') },
       { label: 'Proyectos Especiales', action: () => window.open('https://wa.me/5492657393070', '_blank') }
     ];
@@ -1213,10 +1329,14 @@ const NosotrosView = () => {
     <div className="bg-white min-h-screen pb-20 animate-in slide-in-from-bottom-4 duration-700">
       {/* HEADER HISTÓRICO */}
       <section className="py-24 bg-emerald-950 text-white relative overflow-hidden">
+        
         <div className="absolute inset-0 opacity-10">
+          
           <div className="absolute top-0 right-0 w-96 h-96 bg-yellow-400 rounded-full filter blur-[100px]"></div>
+          
         </div>
         <div className="container mx-auto px-4 relative z-10">
+          
           <h2 className="text-5xl md:text-7xl font-black uppercase italic mb-4 tracking-tighter">Quiénes <span className="text-yellow-400">Somos</span></h2>
           <p className="max-w-2xl text-emerald-100/60 font-medium italic">"Cooperativistas al servicio de Villa Mercedes y de toda la provincia."</p>
         </div>
@@ -1274,8 +1394,8 @@ const BeneficiosView = ({ WA_ASOCIARSE, setActiveTab }) => {
            Todos nuestros asociados disfrutan de un beneficio exclusivo en la compra de materiales eléctricos e iluminación en nuestro showroom. 
          </p>
          <div className="flex flex-wrap justify-center gap-4">
-           <a href={`https://wa.me/${WA_ASOCIARSE}`} target="_blank" className="bg-emerald-800 text-white px-8 py-4 rounded-2xl font-black uppercase tracking-widest hover:bg-emerald-900 transition-all shadow-lg flex items-center">
-             <MessageCircle size={20} className="mr-3" /> Asociarse Ahora
+           <a  target="_blank" className="bg-emerald-800 text-white px-8 py-4 rounded-2xl font-black uppercase tracking-widest hover:bg-emerald-900 transition-all shadow-lg flex items-center">
+            Visitanos y asociate!
            </a>
            <button onClick={() => setActiveTab('inicio')} className="bg-gray-100 text-emerald-950 px-8 py-4 rounded-2xl font-black uppercase tracking-widest hover:bg-gray-200 transition-all">
              Volver al Inicio
@@ -1402,6 +1522,8 @@ const EducacionView = () => {
     </div>
   );
 };
+
+
 
 // --- NUEVO COMPONENTE: ClientesView ---
 const ClientesView = () => {
