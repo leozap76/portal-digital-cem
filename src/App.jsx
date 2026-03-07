@@ -707,7 +707,7 @@ const App = () => {
     </div>
 
     {/* Nav Desktop - Ahora con tus nuevas secciones */}
-    <nav className="hidden xl:flex items-center space-x-8">
+    <nav className="hidden  ">
       {[
         'Inicio', 
         'Quienes Somos', 
@@ -739,7 +739,7 @@ const App = () => {
       
       <button 
         onClick={() => setIsMenuOpen(true)}
-        className="xl:hidden p-2.5 bg-gray-100 rounded-xl text-emerald-900 hover:bg-emerald-100 transition-colors"
+        className="xl:hidden "
       >
         <Menu size={20} />
       </button>
