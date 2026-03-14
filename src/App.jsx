@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import imagenNegocio from './mi_negocio1.webp';
 
 import { 
@@ -380,13 +380,58 @@ const VistaIluminacion = ({ alVolver }) => {
   );
 };
 
+const CarruselProductos = ({ images }) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
 
+  useEffect(() => {
+    // Si no hay imágenes o solo hay una, no hacemos nada
+    if (!images || images.length <= 1) return;
+
+    // Cambiar la foto cada 3 segundos (3000 ms)
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [images]);
+
+  if (!images || images.length === 0) return <div className="w-full h-full bg-slate-200"></div>;
+
+  return (
+    <div className="relative w-full h-full overflow-hidden group">
+      {images.map((img, index) => (
+        <img
+          key={index}
+          src={img}
+          alt={`Producto ${index + 1}`}
+          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${
+            index === currentIndex ? "opacity-100" : "opacity-0"
+          } group-hover:scale-110 transition-transform`}
+        />
+      ))}
+      
+      {/* Puntitos indicadores abajo (opcional) */}
+      {images.length > 1 && (
+        <div className="absolute bottom-3 left-0 right-0 flex justify-center space-x-2 z-10">
+          {images.map((_, idx) => (
+            <div
+              key={idx}
+              className={`w-2 h-2 rounded-full transition-all ${
+                idx === currentIndex ? "bg-white scale-110" : "bg-white/50"
+              }`}
+            />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
 
 
 const App = () => {
   const [seccionActiva, setSeccionActiva] = useState('inicio');
   
-
+const productosRef = useRef(null);
   // --- ESTADOS ---
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeTab, setActiveTab] = useState('inicio');
@@ -494,12 +539,82 @@ const App = () => {
     window.open(`https://wa.me/${number}?text=${message}`, '_blank');
   };
 
-  const featuredProducts = [
-    { id: 1, name: "Candelabro Premium Oro", price: "", category: "Colgante Obit", isPremium: true, image: "https://180grados.com.ar/wp-content/uploads/2026/01/Diseno-sin-titulo-2026-01-23T170103.717.jpg.webp" },
-    { id: 2, name: "Cable Unipolar 2.5mm 100m", price: "", category: "Electricidad", isPremium: false, image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFPdLxd9Ow4BTNpqDKiwGeuEdFRerLCZbR9A&s" },
-    { id: 3, name: "Sigma", price: "", category: "Artefacto de pared", isPremium: true, image: "https://180grados.com.ar/wp-content/uploads/2024/12/Diseno-sin-titulo-2024-12-10T122943.798.jpg.webp" },
-    { id: 4, name: "Térmica Chint 2x25A", price: "", category: "Instalación", isPremium: false, image: "https://http2.mlstatic.com/D_NQ_NP_755335-MLA99585531334_122025-O.webp" }
-  ];
+ const featuredProducts = [
+  { 
+    id: 1, 
+    name: "colgante Garrid", 
+    category: "Colgante Obit", 
+    price: "Consultar precio",
+    isPremium: true, 
+    images: [
+      "https://180grados.com.ar/wp-content/uploads/2024/05/Diseno-sin-titulo-2025-09-10T120028.672.jpg.webp",
+      "https://180grados.com.ar/wp-content/uploads/2025/04/Diseno-sin-titulo-2025-04-21T125216.274.jpg.webp",
+      "https://180grados.com.ar/wp-content/uploads/2025/04/Diseno-sin-titulo-2025-04-21T125239.966.jpg.webp",
+      "https://180grados.com.ar/wp-content/uploads/2025/04/Diseno-sin-titulo-2025-04-21T125227.909.jpg.webp" // Foto 2
+    ] 
+  },
+  { 
+    id: 2, 
+    name: "Aplique linea TAB", 
+    category: "Artefactos de pared",
+    price: "Consultar precio",
+    isPremium: true, 
+    images: [
+      "https://180grados.com.ar/wp-content/uploads/2025/10/Diseno-sin-titulo-2025-10-03T131714.337.jpg",
+      "https://180grados.com.ar/wp-content/uploads/2025/10/Diseno-sin-titulo-2025-10-01T142301.630.jpg",
+      "https://180grados.com.ar/wp-content/uploads/2025/10/Diseno-sin-titulo-2025-10-01T142253.365.jpg",
+       // Foto 2
+    ] 
+  },
+  { 
+    id: 3, 
+    name: "Multimetro digital BAW MS-05", 
+    category: "Instrumentos de medicion", 
+    price: "Consultar precio",
+    isPremium: true, 
+    images: [
+      "https://bawelectric.com/imagenes/productos/2026-01/4409-bawms05.jpg",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_723184-MLA107195247145_022026-F.webp",
+      "https://bawelectric.com/imagenes/archivos/2026-01/236-flyers-comercial-multimetro-smart-bawms05.jpg" // Foto 2
+    ] 
+  },
+  { 
+    id: 4, 
+    name: "Conector tiras led", 
+    category: "Instalación", 
+    price: "Consultar precio",
+    isPremium: false, 
+    images: [
+      "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcTpXwDD45PY49NuoqwKw4wBD_zg6hdwW95PXOcDlnAxuX3oCFvYt9TjDRz01xf1m581GKhohgESwCGN3Bj89XUUYzU3XqOlLQ",
+      "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcSHHHMhiiPmROLTWR6WB9SH6bxOd071sM1I_-EaY1ZjVj0J1YckQKEbMMenx0vRiL4PB_M6fe9xCApg5FBnzPpgxWqlt-PH8zmwPBOUHYpXRhSgX41Cez4gyw" // Foto 2
+    ] 
+  },
+
+   { 
+    id: 5, 
+    name: "Baluns para cámaras", 
+    category: "Instalación", 
+    price: "Consultar precio",
+    isPremium: false, 
+    images: [
+      "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcTYuj_dalh6T2_7kGtK4SlnUX16JwtI24GDGZCzzj2-Fr5F_TgEffqhl_BGpWMM7ORT2J6Gne_iyRwkWURQW_2w-4p4nNQjRg",
+      "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcShY5axmIZ5dqao7TDNcQUU5m_HxkJFgcOMNYBFTzG7jkNtEy8m_R4QyhQyQvDScLSTEGEN_fn0SLURAV86tTOmhAmfMTIMfv_EYLDqeBR-2M4DQvqbuEs0lV4" // Foto 2
+    ] 
+  },
+
+  { 
+    id: 6, 
+    name: "Linea Jeluz Mito", 
+    category: "Instalación", 
+    price: "Consultar precio",
+    isPremium: false, 
+    images: [
+      "data:image/jpeg;base64,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",
+      "data:image/jpeg;base64,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",
+      "data:image/jpeg;base64,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" // Foto 2
+    ] 
+  }
+];
 
   return (
     <>
@@ -783,11 +898,11 @@ const App = () => {
   POR QUE ELEGUIRNOS  <ArrowRight className="ml-3 group-hover:translate-x-2 transition-transform" size={24} />
 </button>
                   <button 
-  onClick={() => setSeccionActiva('iluminacion')}
-  className="bg-white/10 backdrop-blur-md text-white border-2 border-white/20 px-10 py-5 rounded-2xl font-black text-lg hover:bg-white hover:text-emerald-950 transition-all transform hover:scale-105 active:scale-95 flex items-center gap-3"
+  onClick={() => productosRef.current?.scrollIntoView({ behavior: 'smooth' })}
+  className="bg-white/10 backdrop-blur-md text-white border-2 border-white/20 px-10 py-5 rounded-2xl font-black text-lg hover:bg-white hover:text-emerald-950 transition-all transform hover:scale-105 ring-offset-2 active:scale-95 flex items-center gap-3 animate-pulse"
 >
   <Lightbulb size={24} className="text-yellow-400" />
-  SHOWROOM PREMIUM
+  NOVEDADES
 </button>
                 </div>
               </div>
@@ -843,6 +958,7 @@ const App = () => {
               <div className="absolute inset-0 bg-gradient-to-b from-white via-white/80 to-emerald-950/90"></div>
             </div>
 
+<section ref={productosRef} className="py-24 relative overflow-hidden">
             <div className="container mx-auto px-4 relative z-10">
               <div className="flex flex-col md:flex-row justify-between items-end mb-20">
                 <div className="max-w-xl">
@@ -858,7 +974,7 @@ const App = () => {
                 {featuredProducts.map((p) => (
                   <div key={p.id} className="bg-white/95 backdrop-blur-sm rounded-[3rem] p-6 shadow-xl hover:shadow-2xl transition-all group border border-white/20 flex flex-col relative overflow-hidden">
                     <div className="h-64 rounded-[2.5rem] overflow-hidden relative mb-8">
-                      <img src={p.image} className="w-full h-full object-cover group-hover:scale-110 transition-all duration-700" alt={p.name} />
+                      <CarruselProductos images={p.images} />
                       {p.isPremium && (
                         <div className="absolute top-5 left-5 bg-yellow-400 text-emerald-950 text-[9px] font-black px-4 py-1.5 rounded-full uppercase tracking-[0.2em] shadow-lg">
                           PREMIUM
@@ -870,11 +986,14 @@ const App = () => {
                       <h4 className="text-2xl font-bold text-emerald-950 mb-6 leading-tight group-hover:text-emerald-600 transition-colors uppercase tracking-tighter">{p.name}</h4>
                       <div className="flex justify-between items-center pt-6 border-t border-gray-100">
                         <span className="text-3xl font-black text-emerald-900 tracking-tighter italic">{p.price}</span>
-                        <button 
+                        <button  
+                        
                           onClick={() => addToCart(p)}
                           className="w-16 h-16 bg-emerald-50 text-emerald-900 hover:bg-yellow-400 hover:shadow-xl hover:scale-105 rounded-2xl transition-all flex items-center justify-center active:scale-95"
+                          
                         >
                           <ShoppingCart size={24} />
+                          
                         </button>
                       </div>
                     </div>
@@ -882,6 +1001,7 @@ const App = () => {
                 ))}
               </div>
             </div>
+</section>
           </section>
        {/* (Mantén los bloques de las líneas 319 a 505) */}
     </div>
@@ -952,7 +1072,12 @@ const App = () => {
               ) : (
                 cart.map((item, idx) => (
                   <div key={idx} className="flex items-center space-x-5 p-5 bg-gray-50 rounded-[2rem] group border border-transparent hover:border-emerald-100 transition-all">
-                    <img src={item.image} className="w-24 h-24 object-cover rounded-2xl shadow-sm" alt={item.name} />
+                    {/* Cambiamos item.image por item.images[0] */}
+<img 
+  src={item.images && item.images[0] ? item.images[0] : item.image} 
+  className="w-24 h-24 object-cover rounded-2xl shadow-sm" 
+  alt={item.name} 
+/>
                     <div className="flex-1">
                       <h4 className="font-bold text-emerald-900 leading-tight text-lg uppercase tracking-tighter">{item.name}</h4>
                       <p className="text-emerald-700 font-black text-lg italic mt-1">{item.price}</p>
