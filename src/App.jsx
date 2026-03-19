@@ -854,7 +854,7 @@ const productosRef = useRef(null);
       
       <button 
         onClick={() => setIsMenuOpen(true)}
-        className="xl:hidden "
+        
       >
         <Menu size={20} />
       </button>
@@ -920,7 +920,7 @@ const productosRef = useRef(null);
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-emerald-950 via-emerald-950/20 to-transparent flex flex-col justify-end p-12 text-white">
                   <span className="bg-emerald-600 text-white w-fit px-4 py-1 rounded-full font-black text-[10px] uppercase mb-4 tracking-widest">Técnico & Industrial</span>
-                  <h3 className="text-5xl font-black mb-4 uppercase tracking-tighter leading-none">Materiales <br/> Eléctricos</h3>
+                  <h3 className="text-4xl font-black mb-4 uppercase tracking-tighter leading-none">Materiales <br/> Eléctricos</h3>
                   <p className="text-emerald-100/70 mb-8 max-w-xs font-medium italic">Todo para el instalador y grandes obras industriales.</p>
                   <div className="flex items-center font-black text-yellow-400 uppercase tracking-[0.2em] text-xs">
                     Explorar Catálogo <ArrowRight className="ml-2 group-hover:translate-x-3 transition-transform" size={18}/>
@@ -937,7 +937,7 @@ const productosRef = useRef(null);
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-emerald-950 via-emerald-950/40 to-transparent flex flex-col justify-end p-12 text-white">
                   <span className="bg-yellow-400 text-emerald-900 w-fit px-4 py-1 rounded-full font-black text-[10px] uppercase mb-4 tracking-widest">Diseño & Confort</span>
-                  <h3 className="text-5xl font-black mb-4 uppercase tracking-tighter leading-none">Iluminación <br/> & Decoración</h3>
+                  <h3 className="text-4xl font-black mb-4 uppercase tracking-tighter leading-none">Iluminación <br/> & Decoración</h3>
                   <p className="text-emerald-100/70 mb-8 max-w-xs font-medium italic">Visite nuestro showroom para conocer las últimas tendencias.</p>
                   <div className="flex items-center font-black text-yellow-400 uppercase tracking-[0.2em] text-xs">
                     Ver Colección <ArrowRight className="ml-2 group-hover:translate-x-3 transition-transform" size={18}/>
