@@ -842,23 +842,24 @@ const productosRef = useRef(null);
     </nav>
 
     <div className="flex items-center space-x-2">
-      <button 
-        onClick={() => setIsCartOpen(true)}
-        className="group flex items-center space-x-2 bg-emerald-800 hover:bg-emerald-900 text-white px-4 py-2.5 rounded-xl font-black transition-all shadow-xl active:scale-95 relative overflow-hidden"
-      >
-        <ShoppingCart size={18} className="relative z-10" />
-        <span className="relative z-10 bg-yellow-400 text-emerald-900 text-[9px] px-2 py-0.5 rounded-full font-bold">
-          {cart.length}
-        </span>
-      </button>
-      
-      <button 
-        onClick={() => setIsMenuOpen(true)}
-        
-      >
-        <Menu size={20} />
-      </button>
-    </div>
+  <button 
+    onClick={() => setIsCartOpen(true)}
+    className="group flex items-center space-x-2 bg-emerald-800 hover:bg-emerald-900 text-white px-4 py-2.5 rounded-xl font-black transition-all shadow-xl active:scale-95 relative overflow-hidden"
+  >
+    <ShoppingCart size={18} className="relative z-10" />
+    <span className="relative z-10 bg-yellow-400 text-emerald-900 text-[9px] px-2 py-0.5 rounded-full font-bold">
+      {cart.length}
+    </span>
+  </button>
+  
+  {/* BOTÓN CORREGIDO */}
+  <button 
+    onClick={() => setIsMenuOpen(true)}
+    className="2xl:hidden p-2.5 bg-gray-100 rounded-xl text-emerald-900 hover:bg-emerald-100 transition-colors"
+  >
+    <Menu size={20} />
+  </button>
+</div>
   </div>
 </header>
 
