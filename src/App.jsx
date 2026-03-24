@@ -822,7 +822,7 @@ const productosRef = useRef(null);
     </div>
 
     {/* Nav Desktop - Ahora con tus nuevas secciones */}
-    <nav className="hidden  ">
+    <nav className="hidden xl:flex items-center space-x-6">
       {[
         'Inicio', 
         'Quienes Somos', 
