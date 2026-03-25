@@ -1325,8 +1325,8 @@ const ConsejoView = () => {
     vocalest: ["Francisco Luis Saibene", "Antonio Payero", "Jorge Omar De La Rocha", "Carmen Adrian Rivero"],
     vocaless: ["Hilda Violeta Monje", "Roque Alfredo Sosa", "Roberto Francisco Capra"],
     otros: [
-      { cargo: "Síndico Titular", nombre: "Julio Gaston Dayenoff" },
-      { cargo: "Síndico Suplente", nombre: "Luis Alberto Medina" },
+      { cargo: "Síndico Titular", nombre: "Luis Alberto Medina" },
+      { cargo: "Síndico Suplente", nombre: "Julio Gaston Dayenoff" },
       { cargo: "Gerente", nombre: "Nilda Ines Alaniz" }
     ]
   };
@@ -1371,7 +1371,7 @@ const ConsejoView = () => {
             </div>
           </div>
 
-          {/* COLUMNA DERECHA: ACTUALIDAD 2024/2025 */}
+          {/* COLUMNA DERECHA: ACTUALIDAD 2025/2026 */}
           <div className="lg:col-span-2 space-y-8">
             <div className="bg-white rounded-[3rem] p-8 md:p-12 shadow-2xl border border-gray-100">
               <div className="flex justify-between items-end mb-10 border-b-2 border-emerald-50 pb-6">
