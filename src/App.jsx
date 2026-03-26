@@ -822,24 +822,32 @@ const productosRef = useRef(null);
     </div>
 
     {/* Nav Desktop - Ahora con tus nuevas secciones */}
-    <nav className="hidden xl:flex items-center space-x-6">
-      {[
-        'Inicio', 
-        'Quienes Somos', 
-        'Cooperativismo', 
-        'Consejo', 
-        'Educación'
-      ].map((item) => (
-        <button 
-          key={item} 
-          onClick={() => setActiveTab('inicio')}
-          className="relative font-black text-[10px] uppercase tracking-widest text-gray-500 hover:text-emerald-800 transition-colors group"
-        >
-          {item}
-          <span className="absolute -bottom-1 left-0 w-0 h-1 bg-yellow-400 transition-all group-hover:w-full"></span>
-        </button>
-      ))}
-    </nav>
+    {/* MENU PRINCIPAL (DESKTOP) - Reemplaza tu segundo <nav> con este bloque */}
+<nav className="hidden xl:flex items-center space-x-6">
+  {[
+    { name: 'Inicio', tab: 'inicio' },
+    { name: 'Quienes Somos', tab: 'nosotros' },
+    { name: 'Cooperativismo', tab: 'cooperativismo' },
+    { name: 'Consejo', tab: 'consejo' },
+    { name: 'Educación', tab: 'educacion' },
+    { name: 'Beneficios', tab: 'beneficios' },
+    { name: 'Clientes', tab: 'clientes' }
+  ].map((item) => (
+    <button 
+      key={item.name} 
+      onClick={() => setActiveTab(item.tab)}
+      className={`relative font-black text-[10px] uppercase tracking-widest transition-all duration-300 group ${
+        activeTab === item.tab ? 'text-emerald-800' : 'text-gray-400 hover:text-emerald-800'
+      }`}
+    >
+      {item.name}
+      {/* Línea indicadora amarilla que aparece debajo del nombre */}
+      <span className={`absolute -bottom-1 left-0 h-0.5 bg-yellow-400 transition-all duration-300 ${
+        activeTab === item.tab ? 'w-full' : 'w-0 group-hover:w-full'
+      }`}></span>
+    </button>
+  ))}
+</nav>
 
     <div className="flex items-center space-x-2">
   <button 
@@ -1377,7 +1385,7 @@ const ConsejoView = () => {
               <div className="flex justify-between items-end mb-10 border-b-2 border-emerald-50 pb-6">
                 <div>
                   <h3 className="text-3xl font-black uppercase tracking-tighter text-emerald-950">Gestión Actual</h3>
-                  <p className="text-emerald-500 font-bold text-xs uppercase tracking-widest">Periodo 2024 / 2025</p>
+                  <p className="text-emerald-500 font-bold text-xs uppercase tracking-widest">Periodo 2025 / 2026</p>
                 </div>
                 <div className="bg-emerald-100 text-emerald-700 px-4 py-2 rounded-2xl text-[10px] font-black uppercase">Activo</div>
               </div>
