@@ -52,6 +52,8 @@ const VistaMateriales = ({ alVolver }) => {
     return nombre.slice(0, 2).toUpperCase();
   };
 
+  const MOSTRAR_AVISO_EMERGENTE = false; // Cambiá a true cuando quieras que vuelva (habilitar o no el modal)
+
   const marcas = [
     { nombre: "Sica", logo: "/logos/logoSica.webp" },
     { nombre: "Siemens", logo: "/logos/logoSiemens.webp" },
@@ -429,6 +431,16 @@ const CarruselProductos = ({ images }) => {
 
 
 const App = () => {
+
+  const [showModal, setShowModal] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      //setShowModal(true);    // Comentar esta linea para pagar el cartel modal
+    }, 1500); // 1.5 segundos y aparece
+    return () => clearTimeout(timer);
+  }, []);
+
   const [seccionActiva, setSeccionActiva] = useState('inicio');
   
 const productosRef = useRef(null);
@@ -765,6 +777,7 @@ const productosRef = useRef(null);
   <div 
     className={`absolute inset-0 bg-emerald-950/60 backdrop-blur-md transition-opacity duration-500 ${isMenuOpen ? 'opacity-100' : 'opacity-0'}`}
     onClick={() => setIsMenuOpen(false)}
+    
     
   ></div>
   
@@ -1227,8 +1240,70 @@ const productosRef = useRef(null);
           border-radius: 10px;
         }
       `}} />
+
+      {/* --- VENTANA EMERGENTE (MODAL) --- */}
+{showModal && (
+  <div className="fixed inset-0 z-[100] flex items-center justify-center px-4">
+    {/* Fondo oscuro con desenfoque */}
+    <div 
+      className="absolute inset-0 bg-emerald-950/60 backdrop-blur-sm transition-opacity"
+      onClick={() => setShowModal(false)}
+    ></div>
+
+    {/* Contenedor del Anuncio */}
+    <div className="relative bg-white rounded-3xl shadow-2xl max-w-lg w-full overflow-hidden transform transition-all animate-in fade-in zoom-in duration-300">
+      
+      {/* Botón Cerrar */}
+      <button 
+        onClick={() => setShowModal(false)}
+        className="absolute top-4 right-4 z-10 bg-gray-100 hover:bg-gray-200 p-2 rounded-full text-gray-500 transition-colors"
+      >
+        <X size={20} />
+      </button>
+
+      {/* Imagen o Encabezado Visual */}
+      <div className="bg-emerald-800 p-8 text-center relative overflow-hidden">
+        <div className="absolute top-0 right-0 opacity-10">
+          <Zap size={120} className="text-white rotate-12" />
+        </div>
+        <div className="relative z-10">
+          <span className="inline-block bg-yellow-400 text-emerald-900 text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest mb-4">
+            Aviso Importante
+          </span>
+          <h3 className="text-2xl font-black text-white leading-tight uppercase tracking-tighter">
+            ¡Ofertas de la Semana <br/> en Iluminación!
+          </h3>
+        </div>
+      </div>
+
+      {/* Cuerpo del Mensaje */}
+      <div className="p-8 text-center">
+        <p className="text-gray-600 font-medium mb-6">
+          Aprovechá hasta un <strong>20% de descuento</strong> en paneles LED y artefactos de exterior seleccionados para asociados.
+        </p>
+        
+        <div className="flex flex-col space-y-3">
+          <button 
+            onClick={() => { setActiveTab('productos'); setShowModal(false); }}
+            className="w-full bg-emerald-800 text-white font-black py-4 rounded-2xl uppercase text-xs tracking-widest hover:bg-emerald-900 transition-all shadow-lg active:scale-95"
+          >
+            Ver Productos en Oferta
+          </button>
+          
+          <button 
+            onClick={() => setShowModal(false)}
+            className="w-full text-gray-400 font-bold text-[10px] uppercase tracking-widest hover:text-emerald-800 transition-colors"
+          >
+            Quizás más tarde
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+)}
     </div>
     </>
+    
   );
   
 };
@@ -1316,6 +1391,7 @@ const CooperativismoView = () => {
           </div>
         </div>
       </section>
+    
     </div>
   );
 };
