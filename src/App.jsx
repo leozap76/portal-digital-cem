@@ -436,7 +436,7 @@ const App = () => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      //setShowModal(true);    // Comentar esta linea para pagar el cartel modal
+      setShowModal(true);    // Comentar esta linea para apagar el cartel modal
     }, 1500); // 1.5 segundos y aparece
     return () => clearTimeout(timer);
   }, []);
@@ -1251,54 +1251,80 @@ const productosRef = useRef(null);
     ></div>
 
     {/* Contenedor del Anuncio */}
-    <div className="relative bg-white rounded-3xl shadow-2xl max-w-lg w-full overflow-hidden transform transition-all animate-in fade-in zoom-in duration-300">
+    <div className="relative bg-white rounded-[2.5rem] shadow-2xl max-w-lg w-full overflow-hidden transform transition-all animate-in fade-in zoom-in duration-300 border border-gray-100">
+  
+  {/* Botón Cerrar - Más estilizado */}
+  <button 
+    onClick={() => setShowModal(false)}
+    className="absolute top-5 right-5 z-20 bg-white/20 hover:bg-white/40 backdrop-blur-md p-2 rounded-full text-white transition-all shadow-lg border border-white/30"
+  >
+    <X size={20} />
+  </button>
+
+  {/* Encabezado Visual - Estilo Semana Santa */}
+  <div className="bg-emerald-900 p-10 text-center relative overflow-hidden">
+    {/* Decoración de fondo */}
+    <div className="absolute -top-10 -right-10 opacity-10">
+      <Clock size={180} className="text-white -rotate-12" />
+    </div>
+    
+    <div className="relative z-10">
+      <div className="inline-flex items-center space-x-2 bg-yellow-400 text-emerald-950 text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-[0.2em] mb-6 shadow-xl">
+        <Clock size={12} strokeWidth={3} />
+        <span>Atención al Público</span>
+      </div>
+      <h3 className="text-3xl md:text-4xl font-black text-white leading-none uppercase italic tracking-tighter">
+        Feriados de <br/> 
+        <span className="text-yellow-400">Semana Santa</span>
+      </h3>
+    </div>
+  </div>
+
+  {/* Cuerpo del Mensaje - Diseño de Agenda */}
+  <div className="p-8 md:p-10 bg-gray-50/50">
+    <div className="space-y-4">
       
-      {/* Botón Cerrar */}
+      {/* Jueves - Horario Especial */}
+      <div className="bg-white p-6 rounded-2xl border-l-4 border-emerald-500 shadow-sm flex items-center justify-between group hover:shadow-md transition-shadow">
+        <div>
+          <p className="text-emerald-600 font-black uppercase text-[10px] tracking-widest mb-1">Jueves 2</p>
+          <p className="text-emerald-950 font-black text-xl italic">Abierto</p>
+        </div>
+        <div className="text-right">
+          <p className="text-emerald-950 font-black text-lg tracking-tight">8:15 a 13:00 <span className="text-xs">hs</span></p>
+          <p className="text-gray-400 text-[10px] font-bold uppercase italic">Mañana únicamente</p>
+        </div>
+      </div>
+
+      {/* Viernes y Sábado - Cerrado */}
+      <div className="bg-gray-100/50 p-6 rounded-2xl border-l-4 border-red-400 flex items-center justify-between opacity-80">
+        <div>
+          <p className="text-red-500 font-black uppercase text-[10px] tracking-widest mb-1">Viernes 3 y Sábado 4</p>
+          <p className="text-gray-500 font-black text-xl italic text-decoration-line-through">Sin Atención</p>
+        </div>
+        <div className="text-right">
+          <div className="bg-red-100 text-red-600 px-3 py-1 rounded-lg font-black text-xs uppercase tracking-widest">
+            Cerrado
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div className="mt-8 text-center">
+      <p className="text-gray-400 text-[10px] font-bold uppercase tracking-[0.2em] mb-6">
+        Cooperativa CEM - Siempre junto a usted
+      </p>
+      
       <button 
         onClick={() => setShowModal(false)}
-        className="absolute top-4 right-4 z-10 bg-gray-100 hover:bg-gray-200 p-2 rounded-full text-gray-500 transition-colors"
+        className="w-full bg-emerald-800 text-white font-black py-5 rounded-2xl uppercase text-xs tracking-widest hover:bg-emerald-950 transition-all shadow-xl active:scale-95 transform hover:-translate-y-1"
       >
-        <X size={20} />
+        Entendido
       </button>
-
-      {/* Imagen o Encabezado Visual */}
-      <div className="bg-emerald-800 p-8 text-center relative overflow-hidden">
-        <div className="absolute top-0 right-0 opacity-10">
-          <Zap size={120} className="text-white rotate-12" />
-        </div>
-        <div className="relative z-10">
-          <span className="inline-block bg-yellow-400 text-emerald-900 text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest mb-4">
-            Aviso Importante
-          </span>
-          <h3 className="text-2xl font-black text-white leading-tight uppercase tracking-tighter">
-            ¡Ofertas de la Semana <br/> en Iluminación!
-          </h3>
-        </div>
-      </div>
-
-      {/* Cuerpo del Mensaje */}
-      <div className="p-8 text-center">
-        <p className="text-gray-600 font-medium mb-6">
-          Aprovechá hasta un <strong>20% de descuento</strong> en paneles LED y artefactos de exterior seleccionados para asociados.
-        </p>
-        
-        <div className="flex flex-col space-y-3">
-          <button 
-            onClick={() => { setActiveTab('productos'); setShowModal(false); }}
-            className="w-full bg-emerald-800 text-white font-black py-4 rounded-2xl uppercase text-xs tracking-widest hover:bg-emerald-900 transition-all shadow-lg active:scale-95"
-          >
-            Ver Productos en Oferta
-          </button>
-          
-          <button 
-            onClick={() => setShowModal(false)}
-            className="w-full text-gray-400 font-bold text-[10px] uppercase tracking-widest hover:text-emerald-800 transition-colors"
-          >
-            Quizás más tarde
-          </button>
-        </div>
-      </div>
     </div>
+  </div>
+</div>
   </div>
 )}
     </div>
