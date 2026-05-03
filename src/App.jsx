@@ -436,7 +436,7 @@ const App = () => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setShowModal(true);    // Comentar esta linea para apagar el cartel modal
+ //    setShowModal(true);    // Comentar esta linea para apagar el cartel modal
     }, 1500); // 1.5 segundos y aparece
     return () => clearTimeout(timer);
   }, []);
