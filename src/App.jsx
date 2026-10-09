@@ -917,7 +917,7 @@ const productosRef = useRef(null);
   onClick={() => setSeccionActiva('eleguirnos')} 
   className="bg-yellow-400 text-emerald-950 px-10 py-5 rounded-2xl font-black text-lg hover:bg-yellow-500 transition-all shadow-2xl flex items-center group"
 >
-  POR QUE ELEGUIRNOS  <ArrowRight className="ml-3 group-hover:translate-x-2 transition-transform" size={24} />
+  POR QUE ELEGIRNOS  <ArrowRight className="ml-3 group-hover:translate-x-2 transition-transform" size={24} />
 </button>
                   <button 
   onClick={() => productosRef.current?.scrollIntoView({ behavior: 'smooth' })}
